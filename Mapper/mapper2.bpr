@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="Build_exe\mapper2.exe"/>
+    <OBJFILES value="bin\mapper2.obj bin\main.obj bin\map.obj bin\tileset.obj bin\lists.obj 
+      bin\frmset.obj bin\utilites.obj bin\pbar.obj bin\mdi.obj bin\frame.obj 
+      bin\datfile.obj bin\objset.obj bin\proset.obj bin\pro.obj bin\pal.obj 
+      bin\properts.obj bin\config.obj bin\script.obj bin\unlzss.obj 
+      bin\cfile.obj bin\log.obj bin\msg.obj bin\change.obj bin\about.obj"/>
+    <RESFILES value="mapper2.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) main.dfm pbar.dfm mdi.dfm properts.dfm config.dfm change.dfm 
+      about.dfm"/>
+    <LIBFILES value="lib\zlib10.lib &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\msimg32.lib&quot; 
+      &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\ddraw.lib&quot; &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\dxguid.lib&quot;"/>
+    <LIBRARIES value="vclx.lib vcl.lib rtl.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib vclx.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi adortl.bpi 
+      ibsmp.bpi bdertl.bpi vcldbx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi 
+      dss.bpi teeqr.bpi ibxpress.bpi dsnap.bpi vclie.bpi inetdb.bpi inet.bpi 
+      nmfast.bpi webdsnap.bpi bcbie.bpi dclocx.bpi bcb2kaxserver.bpi VGAgp.bpi"/>
+    <PATHCPP value=".;unlzss;cfile"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="mapper2.cpp"/>
+    <INCLUDEPATH value="cfile;unlzss;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="lib;cfile;unlzss;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-Icfile -Iunlzss -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-O2 -H=&quot;C:\Program Files\Borland\CBuilder6\Lib\vcl60.csm&quot; -Hc -Vx -Ve -X- 
+      -a8 -6 -b- -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-N2bin -N0bin -$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-lbin -Ibin -D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="mapper2.cpp" FORMNAME="" UNITNAME="mapper2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="mapper2.res" FORMNAME="" UNITNAME="mapper2" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="main.cpp" FORMNAME="frmEnv" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="map.cpp" FORMNAME="" UNITNAME="map" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="tileset.cpp" FORMNAME="" UNITNAME="tileset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="lists.cpp" FORMNAME="" UNITNAME="lists" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="frmset.cpp" FORMNAME="" UNITNAME="frmset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="utilites.cpp" FORMNAME="" UNITNAME="utilites" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="pbar.cpp" FORMNAME="frmPBar" UNITNAME="pbar" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="mdi.cpp" FORMNAME="frmMDI" UNITNAME="mdi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="frame.cpp" FORMNAME="" UNITNAME="frame" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="datfile.cpp" FORMNAME="" UNITNAME="datfile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="objset.cpp" FORMNAME="" UNITNAME="objset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="proset.cpp" FORMNAME="" UNITNAME="proset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="pro.cpp" FORMNAME="" UNITNAME="pro" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="lib\zlib10.lib" FORMNAME="" UNITNAME="zlib10" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="pal.cpp" FORMNAME="" UNITNAME="pal" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\Program Files\Borland\CBuilder5\Lib\PSDK\msimg32.lib" FORMNAME="" UNITNAME="msimg32" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="properts.cpp" FORMNAME="frmProperties" UNITNAME="properts" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="config.cpp" FORMNAME="frmConfig" UNITNAME="config" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="script.cpp" FORMNAME="" UNITNAME="script" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="unlzss\unlzss.cpp" FORMNAME="" UNITNAME="unlzss" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="cfile\cfile.cpp" FORMNAME="" UNITNAME="cfile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="log.cpp" FORMNAME="" UNITNAME="log" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="msg.cpp" FORMNAME="" UNITNAME="msg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\Program Files\Borland\CBuilder5\Lib\PSDK\ddraw.lib" FORMNAME="" UNITNAME="ddraw" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\Program Files\Borland\CBuilder5\Lib\PSDK\dxguid.lib" FORMNAME="" UNITNAME="dxguid" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="change.cpp" FORMNAME="fmChange" UNITNAME="change" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="about.cpp" FORMNAME="AboutBox" UNITNAME="about" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=0
+MinorVer=99
+Release=1
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1049
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=0.99.1.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=mapper
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\program files\borland\cbuilder6\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
+
+[HistoryLists\hlIncludePath]
+Count=2
+Item0=cfile;unlzss;$(BCB)\include;$(BCB)\include\vcl
+Item1=cfile;unlzss;C:\Program Files\Borland\CBuilder6\Include;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=lib;cfile;unlzss;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
+Item1=cfile;unlzss;C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
+Item2=cfile;unlzss;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=bin
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=Build_exe\
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=bin
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
