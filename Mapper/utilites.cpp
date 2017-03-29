@@ -543,8 +543,8 @@ int CUtilites::GetBlockType(BYTE nProObjType, WORD nProID)
 {
    if (nProObjType == scenery_ID && nProID == 0x31) return EG_blockID;
    if (nProObjType == scenery_ID && nProID == 0x0158) return SAI_blockID;
-   if (nProObjType == wall_ID && nProID == 0x026e) return wall_blockID;
-   if (nProObjType == scenery_ID && nProID == 0x43) return obj_blockID;
+   if (nProObjType == wall_ID && (nProID == 0x026e || nProID == 0x026d)) return wall_blockID;
+   if (nProObjType == scenery_ID && (nProID == 0x43 || nProID == 0x80)) return obj_blockID;
    if (nProObjType == scenery_ID && nProID == 0x8d) return light_blockID;
    if (nProObjType == misc_ID && nProID == 0x05) return scroll_blockID;
    if (nProObjType == misc_ID && nProID == 0x0c) return scroll_blockID;
