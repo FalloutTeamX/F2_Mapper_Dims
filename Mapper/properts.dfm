@@ -1,6 +1,6 @@
 object frmProperties: TfrmProperties
-  Left = 423
-  Top = 157
+  Left = 363
+  Top = 185
   Width = 487
   Height = 557
   HorzScrollBar.Visible = False
@@ -22,7 +22,7 @@ object frmProperties: TfrmProperties
     Left = 264
     Top = 0
     Width = 215
-    Height = 481
+    Height = 482
     Align = alRight
     Color = 15724527
     Columns = <
@@ -51,7 +51,7 @@ object frmProperties: TfrmProperties
   end
   object sb: TStatusBar
     Left = 0
-    Top = 503
+    Top = 504
     Width = 479
     Height = 19
     Panels = <
@@ -62,7 +62,7 @@ object frmProperties: TfrmProperties
   end
   object pn: TPanel
     Left = 0
-    Top = 481
+    Top = 482
     Width = 479
     Height = 22
     Align = alBottom
@@ -112,7 +112,7 @@ object frmProperties: TfrmProperties
     Left = 0
     Top = 0
     Width = 264
-    Height = 481
+    Height = 482
     Align = alClient
     Color = 13160660
     ParentColor = False
@@ -139,32 +139,33 @@ object frmProperties: TfrmProperties
     end
     object lbl1: TLabel
       Left = 2
-      Top = 52
+      Top = 84
       Width = 72
       Height = 13
       Caption = 'Script filename:'
     end
     object Label1: TLabel
       Left = 2
-      Top = 74
+      Top = 108
       Width = 84
       Height = 13
       Caption = 'Script description:'
     end
     object Bevel2: TBevel
       Left = 8
-      Top = 112
+      Top = 160
       Width = 241
       Height = 9
       Shape = bsTopLine
     end
     object cbScript: TComboBox
       Left = 88
-      Top = 51
+      Top = 83
       Width = 169
       Height = 21
       Style = csDropDownList
       Color = 14870505
+      DropDownCount = 40
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -177,7 +178,7 @@ object frmProperties: TfrmProperties
     end
     object flag1: TCheckBox
       Left = 16
-      Top = 120
+      Top = 168
       Width = 97
       Height = 17
       Caption = 'Don'#39't show'
@@ -188,7 +189,7 @@ object frmProperties: TfrmProperties
     end
     object flag2: TCheckBox
       Left = 16
-      Top = 136
+      Top = 184
       Width = 97
       Height = 17
       Caption = 'Flag2'
@@ -199,7 +200,7 @@ object frmProperties: TfrmProperties
     end
     object flag3: TCheckBox
       Left = 16
-      Top = 152
+      Top = 200
       Width = 97
       Height = 17
       Caption = 'Show 1 time'
@@ -210,7 +211,7 @@ object frmProperties: TfrmProperties
     end
     object flag4: TCheckBox
       Left = 16
-      Top = 168
+      Top = 216
       Width = 97
       Height = 17
       Caption = 'Send to back'
@@ -221,10 +222,10 @@ object frmProperties: TfrmProperties
     end
     object flag5: TCheckBox
       Left = 16
-      Top = 184
+      Top = 232
       Width = 97
       Height = 17
-      Caption = 'Haven'#39't block'
+      Caption = 'No Block'
       Color = 13160660
       ParentColor = False
       TabOrder = 5
@@ -232,7 +233,7 @@ object frmProperties: TfrmProperties
     end
     object flag6: TCheckBox
       Left = 16
-      Top = 200
+      Top = 248
       Width = 97
       Height = 17
       Caption = 'Obj is light'
@@ -243,7 +244,7 @@ object frmProperties: TfrmProperties
     end
     object flag7: TCheckBox
       Left = 16
-      Top = 216
+      Top = 264
       Width = 97
       Height = 17
       Caption = 'Flag7'
@@ -254,7 +255,7 @@ object frmProperties: TfrmProperties
     end
     object flag8: TCheckBox
       Left = 16
-      Top = 232
+      Top = 280
       Width = 97
       Height = 17
       Caption = 'Flag8'
@@ -265,7 +266,7 @@ object frmProperties: TfrmProperties
     end
     object flag9: TCheckBox
       Left = 16
-      Top = 248
+      Top = 296
       Width = 97
       Height = 17
       Caption = 'Flag9'
@@ -276,7 +277,7 @@ object frmProperties: TfrmProperties
     end
     object flag10: TCheckBox
       Left = 16
-      Top = 264
+      Top = 312
       Width = 97
       Height = 17
       Caption = 'Flag10'
@@ -287,7 +288,7 @@ object frmProperties: TfrmProperties
     end
     object flag11: TCheckBox
       Left = 16
-      Top = 280
+      Top = 328
       Width = 97
       Height = 17
       Caption = 'Flag11'
@@ -298,10 +299,10 @@ object frmProperties: TfrmProperties
     end
     object flag12: TCheckBox
       Left = 16
-      Top = 296
+      Top = 344
       Width = 97
       Height = 17
-      Caption = 'Flag12'
+      Caption = 'Multi Hex'
       Color = 13160660
       ParentColor = False
       TabOrder = 12
@@ -309,10 +310,10 @@ object frmProperties: TfrmProperties
     end
     object flag13: TCheckBox
       Left = 16
-      Top = 312
+      Top = 360
       Width = 97
       Height = 17
-      Caption = 'Hide border'
+      Caption = 'No Highlight'
       Color = 13160660
       ParentColor = False
       TabOrder = 13
@@ -320,7 +321,7 @@ object frmProperties: TfrmProperties
     end
     object flag14: TCheckBox
       Left = 16
-      Top = 328
+      Top = 376
       Width = 97
       Height = 17
       Caption = 'Flag14'
@@ -331,10 +332,10 @@ object frmProperties: TfrmProperties
     end
     object flag15: TCheckBox
       Left = 16
-      Top = 344
+      Top = 392
       Width = 97
       Height = 17
-      Caption = 'Red pallete'
+      Caption = 'Trans Red'
       Color = 13160660
       ParentColor = False
       TabOrder = 15
@@ -342,10 +343,10 @@ object frmProperties: TfrmProperties
     end
     object flag16: TCheckBox
       Left = 16
-      Top = 360
+      Top = 408
       Width = 97
       Height = 17
-      Caption = 'Solid object'
+      Caption = 'Trans None'
       Color = 13160660
       ParentColor = False
       TabOrder = 16
@@ -353,9 +354,9 @@ object frmProperties: TfrmProperties
     end
     object pages: TPageControl
       Left = 0
-      Top = 399
+      Top = 428
       Width = 260
-      Height = 78
+      Height = 50
       ActivePage = TabSheet1
       Align = alBottom
       TabOrder = 17
@@ -448,10 +449,10 @@ object frmProperties: TfrmProperties
     end
     object flag17: TCheckBox
       Left = 120
-      Top = 120
+      Top = 168
       Width = 97
       Height = 17
-      Caption = 'Night light'
+      Caption = 'TransWall'
       Color = 13160660
       ParentColor = False
       TabOrder = 18
@@ -459,10 +460,10 @@ object frmProperties: TfrmProperties
     end
     object flag18: TCheckBox
       Left = 120
-      Top = 136
-      Width = 97
+      Top = 184
+      Width = 103
       Height = 17
-      Caption = 'Transp 25%'
+      Caption = 'TransGlass [25%]'
       Color = 13160660
       ParentColor = False
       TabOrder = 19
@@ -470,10 +471,10 @@ object frmProperties: TfrmProperties
     end
     object flag19: TCheckBox
       Left = 120
-      Top = 152
-      Width = 97
+      Top = 200
+      Width = 111
       Height = 17
-      Caption = 'Transp 50%'
+      Caption = 'TransSteam [50%]'
       Color = 13160660
       ParentColor = False
       TabOrder = 20
@@ -481,10 +482,10 @@ object frmProperties: TfrmProperties
     end
     object flag20: TCheckBox
       Left = 120
-      Top = 168
+      Top = 216
       Width = 97
       Height = 17
-      Caption = 'Yellow pallete'
+      Caption = 'Trans Energy'
       Color = 13160660
       ParentColor = False
       TabOrder = 21
@@ -492,7 +493,7 @@ object frmProperties: TfrmProperties
     end
     object flag21: TCheckBox
       Left = 120
-      Top = 184
+      Top = 232
       Width = 97
       Height = 17
       Caption = 'Flag21'
@@ -503,7 +504,7 @@ object frmProperties: TfrmProperties
     end
     object flag22: TCheckBox
       Left = 120
-      Top = 200
+      Top = 248
       Width = 97
       Height = 17
       Caption = 'Flag22'
@@ -514,7 +515,7 @@ object frmProperties: TfrmProperties
     end
     object flag23: TCheckBox
       Left = 120
-      Top = 216
+      Top = 264
       Width = 97
       Height = 17
       Caption = 'Flag23'
@@ -525,7 +526,7 @@ object frmProperties: TfrmProperties
     end
     object flag24: TCheckBox
       Left = 120
-      Top = 232
+      Top = 280
       Width = 97
       Height = 17
       Caption = 'Flag24'
@@ -536,7 +537,7 @@ object frmProperties: TfrmProperties
     end
     object flag25: TCheckBox
       Left = 120
-      Top = 248
+      Top = 296
       Width = 97
       Height = 17
       Caption = 'Flag25'
@@ -547,7 +548,7 @@ object frmProperties: TfrmProperties
     end
     object flag26: TCheckBox
       Left = 120
-      Top = 264
+      Top = 312
       Width = 97
       Height = 17
       Caption = 'Flag26'
@@ -558,7 +559,7 @@ object frmProperties: TfrmProperties
     end
     object flag27: TCheckBox
       Left = 120
-      Top = 280
+      Top = 328
       Width = 97
       Height = 17
       Caption = 'Flag27'
@@ -569,7 +570,7 @@ object frmProperties: TfrmProperties
     end
     object flag28: TCheckBox
       Left = 120
-      Top = 296
+      Top = 344
       Width = 97
       Height = 17
       Caption = 'Flag28'
@@ -580,7 +581,7 @@ object frmProperties: TfrmProperties
     end
     object flag29: TCheckBox
       Left = 120
-      Top = 312
+      Top = 360
       Width = 97
       Height = 17
       Caption = 'Flag29'
@@ -591,10 +592,10 @@ object frmProperties: TfrmProperties
     end
     object flag30: TCheckBox
       Left = 120
-      Top = 328
+      Top = 376
       Width = 97
       Height = 17
-      Caption = 'Flag30'
+      Caption = 'LightThru'
       Color = 13160660
       ParentColor = False
       TabOrder = 31
@@ -602,7 +603,7 @@ object frmProperties: TfrmProperties
     end
     object flag31: TCheckBox
       Left = 120
-      Top = 344
+      Top = 392
       Width = 97
       Height = 17
       Caption = 'Flag31'
@@ -613,10 +614,10 @@ object frmProperties: TfrmProperties
     end
     object flag32: TCheckBox
       Left = 120
-      Top = 360
+      Top = 408
       Width = 97
       Height = 17
-      Caption = 'Flag32'
+      Caption = 'ShootThru'
       Color = 13160660
       ParentColor = False
       TabOrder = 33
@@ -624,18 +625,18 @@ object frmProperties: TfrmProperties
     end
     object lblScriptDesc: TMemo
       Left = 88
-      Top = 72
+      Top = 108
       Width = 169
-      Height = 33
+      Height = 47
       Color = 14870505
       ReadOnly = True
       TabOrder = 34
     end
     object lblMSG2: TMemo
       Left = 0
-      Top = 14
+      Top = 18
       Width = 257
-      Height = 33
+      Height = 59
       Color = 14806749
       ReadOnly = True
       TabOrder = 35

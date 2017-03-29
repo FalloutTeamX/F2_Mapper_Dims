@@ -28,7 +28,7 @@ __fastcall TfrmMDI::TfrmMDI(TComponent* Owner)
    pUtil = new CUtilites();
    pUtil->InitDirectories();
    pLog = new CLog(ExtractFilePath(Application->ExeName) + "\\mapper.log");
-   this->OpenDialog1->InitialDir = pUtil->DataDir;
+   this->OpenDialog1->InitialDir = pUtil->DataDir + "\\maps";
    Screen->Cursors[crHandCursor] = LoadCursor(HInstance, "hand");
    Screen->Cursors[crHandTakeCursor] = LoadCursor(HInstance, "handtake");
    Screen->Cursors[crCrossCursor] = LoadCursor(HInstance, "cross");
