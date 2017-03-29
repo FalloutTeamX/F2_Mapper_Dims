@@ -1,8 +1,8 @@
 object frmEnv: TfrmEnv
-  Left = 252
-  Top = 125
-  Width = 927
-  Height = 689
+  Left = 2
+  Top = 86
+  Width = 1282
+  Height = 997
   Caption = 'Map'
   Color = 4194304
   Font.Charset = DEFAULT_CHARSET
@@ -20,32 +20,72 @@ object frmEnv: TfrmEnv
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
+  object Shape7: TShape
+    Left = 1164
+    Top = 329
+    Width = 110
+    Height = 25
+    Brush.Style = bsClear
+    Pen.Color = 7904687
+    Pen.Width = 15
+    Shape = stRoundRect
+  end
+  object Shape1: TShape
+    Left = 1164
+    Top = 343
+    Width = 110
+    Height = 468
+    Brush.Color = clBlack
+    Pen.Color = 7904687
+    Pen.Width = 3
+  end
+  object Shape9: TShape
+    Left = 728
+    Top = 814
+    Width = 21
+    Height = 129
+    Brush.Style = bsClear
+    Pen.Color = 7904687
+    Pen.Width = 10
+    Shape = stRoundRect
+  end
+  object Shape10: TShape
+    Left = 2
+    Top = 814
+    Width = 19
+    Height = 127
+    Brush.Style = bsClear
+    Pen.Color = 7904687
+    Pen.Width = 10
+    Shape = stRoundRect
+  end
+  object Shape11: TShape
+    Left = 8
+    Top = 814
+    Width = 735
+    Height = 129
+    Brush.Color = clBlack
+    Pen.Color = 7904687
+    Pen.Width = 3
+  end
   object Shape8: TShape
-    Left = 1
-    Top = 505
-    Width = 80
-    Height = 27
+    Left = 15
+    Top = 836
+    Width = 28
+    Height = 55
     Brush.Color = 4194368
     Pen.Color = clBtnFace
   end
   object Shape6: TShape
-    Left = 686
-    Top = 532
-    Width = 78
-    Height = 99
+    Left = 1170
+    Top = 720
+    Width = 99
+    Height = 83
     Brush.Color = 6838104
     Pen.Color = clBtnFace
   end
-  object Shape5: TShape
-    Left = 0
-    Top = 532
-    Width = 686
-    Height = 80
-    Brush.Color = clNone
-    Pen.Color = clBtnFace
-  end
   object Shape4: TShape
-    Left = 654
+    Left = 1164
     Top = 2
     Width = 110
     Height = 25
@@ -57,7 +97,7 @@ object frmEnv: TfrmEnv
   object Shape3: TShape
     Left = 1
     Top = 2
-    Width = 650
+    Width = 1160
     Height = 25
     Brush.Style = bsClear
     Pen.Color = 7904687
@@ -66,15 +106,15 @@ object frmEnv: TfrmEnv
   end
   object shp: TShape
     Left = 1
-    Top = 14
-    Width = 650
-    Height = 490
+    Top = 16
+    Width = 1160
+    Height = 795
     Brush.Color = clBlack
     Pen.Color = 7904687
     Pen.Width = 3
   end
   object Shape2: TShape
-    Left = 654
+    Left = 1164
     Top = 14
     Width = 110
     Height = 310
@@ -83,8 +123,8 @@ object frmEnv: TfrmEnv
     Pen.Width = 3
   end
   object imgMiniMap: TImage
-    Left = 659
-    Top = 19
+    Left = 1169
+    Top = 21
     Width = 100
     Height = 300
     OnMouseDown = imgMiniMapMouseDown
@@ -92,7 +132,7 @@ object frmEnv: TfrmEnv
     OnMouseUp = imgMiniMapMouseUp
   end
   object lblMM: TLabel
-    Left = 661
+    Left = 1171
     Top = 3
     Width = 51
     Height = 13
@@ -119,12 +159,13 @@ object frmEnv: TfrmEnv
     Transparent = True
   end
   object btnWorld: TSpeedButton
-    Left = 3
-    Top = 507
+    Left = 17
+    Top = 839
     Width = 23
     Height = 22
     Hint = 'Show global objects'
     GroupIndex = 1
+    Down = True
     Flat = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -164,13 +205,12 @@ object frmEnv: TfrmEnv
     OnClick = btnWorldClick
   end
   object btnLocal: TSpeedButton
-    Left = 27
-    Top = 507
+    Left = 17
+    Top = 865
     Width = 23
     Height = 22
     Hint = 'Show local objects'
     GroupIndex = 1
-    Down = True
     Flat = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -209,28 +249,9 @@ object frmEnv: TfrmEnv
     ShowHint = True
     OnClick = btnLocalClick
   end
-  object Shape7: TShape
-    Left = 654
-    Top = 327
-    Width = 110
-    Height = 25
-    Brush.Style = bsClear
-    Pen.Color = 7904687
-    Pen.Width = 15
-    Shape = stRoundRect
-  end
-  object Shape1: TShape
-    Left = 654
-    Top = 339
-    Width = 110
-    Height = 192
-    Brush.Color = clBlack
-    Pen.Color = 7904687
-    Pen.Width = 3
-  end
   object lblinv: TLabel
-    Left = 661
-    Top = 328
+    Left = 1171
+    Top = 330
     Width = 57
     Height = 13
     Caption = 'Inventory'
@@ -243,9 +264,9 @@ object frmEnv: TfrmEnv
     Transparent = True
   end
   object btnAdd: TSpeedButton
-    Left = 689
-    Top = 607
-    Width = 73
+    Left = 1177
+    Top = 727
+    Width = 86
     Height = 22
     Caption = 'Add'
     Enabled = False
@@ -272,9 +293,9 @@ object frmEnv: TfrmEnv
     OnClick = btnAddClick
   end
   object btnRemove: TSpeedButton
-    Left = 689
-    Top = 557
-    Width = 73
+    Left = 1177
+    Top = 775
+    Width = 86
     Height = 22
     Caption = 'Remove'
     Enabled = False
@@ -301,9 +322,9 @@ object frmEnv: TfrmEnv
     OnClick = btnRemoveClick
   end
   object btnChange: TSpeedButton
-    Left = 689
-    Top = 535
-    Width = 73
+    Left = 1177
+    Top = 751
+    Width = 86
     Height = 22
     Caption = 'Change'
     Enabled = False
@@ -329,22 +350,49 @@ object frmEnv: TfrmEnv
     ParentFont = False
     OnClick = btnChangeClick
   end
-  object imgObj: TPanel
-    Left = 1
-    Top = 533
-    Width = 684
-    Height = 80
-    BevelOuter = bvNone
-    Color = clBlack
-    FullRepaint = False
-    TabOrder = 2
-    OnMouseDown = imgObjMouseDown
+  object Label1: TLabel
+    Left = 1160
+    Top = 922
+    Width = 109
+    Height = 13
+    Caption = 'Mapper fixed by Fakels'
+    Color = 4194304
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clSilver
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape5: TShape
+    Left = 42
+    Top = 836
+    Width = 693
+    Height = 103
+    Brush.Color = clNone
+    Pen.Color = clBtnFace
+  end
+  object Label2: TLabel
+    Left = 17
+    Top = 820
+    Width = 87
+    Height = 13
+    Caption = 'Object Selector'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
   end
   object imgMap: TPanel
     Left = 6
     Top = 19
-    Width = 640
-    Height = 480
+    Width = 1150
+    Height = 788
     BevelOuter = bvNone
     Color = clBlack
     FullRepaint = False
@@ -355,9 +403,56 @@ object frmEnv: TfrmEnv
     OnMouseMove = imgMapMouseMove
     OnMouseUp = imgMapMouseUp
   end
+  object sbar: TStatusBar
+    Left = 0
+    Top = 944
+    Width = 1274
+    Height = 19
+    Panels = <
+      item
+        Width = 100
+      end
+      item
+        Width = 100
+      end
+      item
+        Width = 100
+      end
+      item
+        Width = 100
+      end
+      item
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+  object imgObj: TPanel
+    Left = 47
+    Top = 839
+    Width = 684
+    Height = 80
+    BevelOuter = bvNone
+    Color = clBlack
+    FullRepaint = False
+    TabOrder = 2
+    OnMouseDown = imgObjMouseDown
+  end
+  object sb: TScrollBar
+    Left = 46
+    Top = 920
+    Width = 685
+    Height = 16
+    Enabled = False
+    LargeChange = 8
+    Max = 1
+    PageSize = 0
+    TabOrder = 1
+    TabStop = False
+    OnScroll = sbScroll
+  end
   object tabc: TTabControl
-    Left = 119
-    Top = 513
+    Left = 189
+    Top = 817
     Width = 531
     Height = 19
     Font.Charset = DEFAULT_CHARSET
@@ -381,58 +476,9 @@ object frmEnv: TfrmEnv
     TabStop = False
     OnChange = tabcChange
   end
-  object sb: TScrollBar
-    Left = 0
-    Top = 614
-    Width = 685
-    Height = 16
-    Enabled = False
-    LargeChange = 8
-    Max = 1
-    PageSize = 0
-    TabOrder = 1
-    TabStop = False
-    OnScroll = sbScroll
-  end
-  object sbar: TStatusBar
-    Left = 0
-    Top = 635
-    Width = 919
-    Height = 19
-    Panels = <
-      item
-        Width = 100
-      end
-      item
-        Width = 100
-      end
-      item
-        Width = 100
-      end
-      item
-        Width = 100
-      end
-      item
-        Width = 50
-      end>
-    SimplePanel = False
-  end
-  object sbINV: TScrollBar
-    Left = 744
-    Top = 343
-    Width = 16
-    Height = 184
-    Enabled = False
-    Kind = sbVertical
-    Max = 0
-    PageSize = 0
-    TabOrder = 5
-    TabStop = False
-    OnChange = sbINVChange
-  end
   object imgInv: TPanel
-    Left = 658
-    Top = 342
+    Left = 1168
+    Top = 348
     Width = 85
     Height = 186
     BevelOuter = bvNone
@@ -447,12 +493,25 @@ object frmEnv: TfrmEnv
     TabOrder = 6
     OnMouseDown = imgInvMouseDown
   end
+  object sbINV: TScrollBar
+    Left = 1254
+    Top = 351
+    Width = 14
+    Height = 364
+    Enabled = False
+    Kind = sbVertical
+    Max = 0
+    PageSize = 0
+    TabOrder = 5
+    TabStop = False
+    OnChange = sbINVChange
+  end
   object popupMap: TPopupMenu
     OnPopup = popupMapPopup
-    Left = 617
-    Top = 470
+    Left = 1185
+    Top = 818
     object Mapperv09byDims1: TMenuItem
-      Caption = 'Mapper v0.98c by Dims'
+      Caption = 'Mapper v0.99.2 by Dims'
       Enabled = False
     end
     object N1: TMenuItem
@@ -471,8 +530,8 @@ object frmEnv: TfrmEnv
     end
   end
   object ImageList1: TImageList
-    Left = 621
-    Top = 510
+    Left = 1227
+    Top = 818
     Bitmap = {
       494C010107000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030

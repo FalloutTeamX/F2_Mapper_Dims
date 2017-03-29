@@ -137,7 +137,7 @@ __fastcall TfrmEnv::TfrmEnv(TComponent* Owner)
    frmMDI->tbcurs->Visible = true;
    frmMDI->tbVis->Visible = true;
    frmMDI->btnSaveAs->Enabled = true;
-   btnLocalClick(this);
+   btnWorldClick(this); //btnLocalClick(this);
    RedrawInventory();
    SetButtonSave(false);
 }
@@ -520,15 +520,13 @@ void __fastcall TfrmEnv::btnChangeClick(TObject *Sender)
    }
 }
 //---------------------------------------------------------------------------
-void TfrmEnv::TransBltFrm(CFrame* frm, TControl* win, short nDir, short nFrame,
-                                        int x, int y, LPDIRECTDRAWSURFACE7 dds2)
+void TfrmEnv::TransBltFrm(CFrame* frm, TControl* win, short nDir, short nFrame, int x, int y, LPDIRECTDRAWSURFACE7 dds2)
 {
    RECT rcs, rcd;
    rcs = Bounds(frm->GetSprX(nDir, nFrame), frm->GetSprY(nDir, nFrame),
                             frm->GetWi(nDir, nFrame), frm->GetHe(nDir, nFrame));
    rcd = Bounds(x, y, frm->GetWi(nDir, nFrame), frm->GetHe(nDir, nFrame));
-   HRESULT res = dds2->Blt(&rcd, frm->GetBMP(), &rcs,
-                                               DDBLT_WAIT | DDBLT_KEYSRC, NULL);
+   HRESULT res = dds2->Blt(&rcd, frm->GetBMP(), &rcs, DDBLT_WAIT | DDBLT_KEYSRC, NULL);
 }
 //---------------------------------------------------------------------------
 void TfrmEnv::TransBltMask(CFrame* frm, TControl* win, short nDir, short nFrame,
@@ -538,8 +536,7 @@ void TfrmEnv::TransBltMask(CFrame* frm, TControl* win, short nDir, short nFrame,
    rcs = Bounds(0, 0, width, height);
    rcd = Bounds(x, y, width, height);
    frm->InitBorder(nDir, nFrame, width, height);
-   HRESULT res = dds2->Blt(&rcd, frm->GetBorder(), &rcs,
-                                               DDBLT_WAIT | DDBLT_KEYSRC, NULL);
+   HRESULT res = dds2->Blt(&rcd, frm->GetBorder(), &rcs, DDBLT_WAIT | DDBLT_KEYSRC, NULL);
 }
 //---------------------------------------------------------------------------
 void TfrmEnv::TransBltTileRegion(LPDIRECTDRAWSURFACE7 dds2,
@@ -639,8 +636,8 @@ void TfrmEnv::AttachDDraw(TControl *win, LPDIRECTDRAWSURFACE7 *dds, int primary)
 void TfrmEnv::RedrawMap(bool StaticRedraw)
 {
    if ((OldWorldX == WorldX) && (OldWorldY == WorldY) && !StaticRedraw) return;
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    HDC dc;
    dds2Map->GetDC (&dc);
    PatBlt(dc, 0, 0, w1, h1, BLACKNESS);
@@ -680,8 +677,8 @@ void TfrmEnv::RedrawFloor(void)
    WORD TileId;
    int xx = 4752; //
    int yy = 0; //
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    for (y = iLevel * 100; y < (iLevel + 1) * 100; y++)
    {
       prev_xx = xx;
@@ -689,7 +686,7 @@ void TfrmEnv::RedrawFloor(void)
       for (x = 0; x < 100; x++)
       {
          TileId = pTileSet->GetFloorID(x, y);
-         TileId &= 0x0FFF;
+         //TileId &= 0x0FFF; //отключаем ограничение на 4095 frm для тайлов
          if (TileId != 1) //несуществующие тайлы пола
          {
             if ((xx + pFrmSet->pFRM[tile_ID][TileId].GetWi(0, 0) > WorldX && xx < WorldX + w1) &&
@@ -717,8 +714,8 @@ void TfrmEnv::RedrawFloor(void)
 //---------------------------------------------------------------------------
 void TfrmEnv::RedrawObjects(void)
 {
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    int X, Y;
    BYTE *pObj, nObjType, nProObjType;
    WORD nX, nY, nXX, nYY, nFrmID, nProID;
@@ -780,8 +777,8 @@ void TfrmEnv::RedrawRoof(void)
    WORD TileId;
    int xx = 4752; //4752              TileX = 0
    int yy = -96; //0                    TileY = 0
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    for (y = iLevel * 100; y < (iLevel + 1) * 100; y++)
    {
       prev_xx = xx;
@@ -789,7 +786,7 @@ void TfrmEnv::RedrawRoof(void)
       for (x = 0; x < 100; x++)
       {
          TileId = pTileSet->GetRoofID(x, y);
-         TileId &= 0x0FFF;
+         //TileId &= 0x0FFF;  //отключаем ограничение на 4095 frm для тайлов
          if (TileId != 1) {//несуществующие тайлы потолка
             if ((xx + pFrmSet->pFRM[tile_ID][TileId].GetWi(0, 0) > WorldX && xx < WorldX + w1) &&
                (yy + pFrmSet->pFRM[tile_ID][TileId].GetHe(0, 0) > WorldY && yy < WorldY + h1))
@@ -816,8 +813,8 @@ void TfrmEnv::RedrawRoof(void)
 //---------------------------------------------------------------------------
 void TfrmEnv::RedrawBlockers(void)
 {
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    int X, Y;
    BYTE *pObj, nObjType, nProObjType;
    WORD nX, nY, nXX, nYY, nFrmID, nProID;
@@ -866,8 +863,8 @@ void TfrmEnv::RedrawBlockers(void)
 //---------------------------------------------------------------------------
 void TfrmEnv::RedrawHex(void)
 {
-   int w1 = 640;
-   int h1 = 480;
+   int w1 = 1150;
+   int h1 = 790;
    int nMapX, nMapY;
    int x, y;
    for (y = 0; y < 200; y++)

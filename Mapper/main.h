@@ -63,6 +63,11 @@ __published:	// IDE-managed Components
         TSpeedButton *btnAdd;
         TSpeedButton *btnRemove;
         TSpeedButton *btnChange;
+        TShape *Shape10;
+        TLabel *Label1;
+        TShape *Shape11;
+        TLabel *Label2;
+        TShape *Shape9;
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall imgMapMouseDown(TObject *Sender,

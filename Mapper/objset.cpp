@@ -159,7 +159,7 @@ BYTE* CObjSet::GetNextObj(DWORD *nObjNum, DWORD *nChildCount, int nLevel)
          nObjLen = SubIDlen[nObjType][nSubType];
          break;
       case 0 : // misc type
-         nObjLen = (nObjID == 1 || nObjID == 12) ? 88 : 104;
+         nObjLen =(nObjID >= 16 && nObjID <= 23) ? 104 : 88;  //(nObjID == 1 || nObjID == 12) ? 88 : 104;    //
          break;
       default :
          nObjLen = IDlen[nObjType];
@@ -216,7 +216,7 @@ int CObjSet::GetObjLen(void)
          nObjLen = SubIDlen[nObjType][nSubType];
          break;
       case 0 : // misc type
-         nObjLen = (nObjID == 1 || nObjID == 12) ? 88 : 104;
+         nObjLen = (nObjID >= 16 && nObjID <= 23) ? 104 : 88;   //(nObjID == 1 || nObjID == 12) ? 88 : 104;  //
          break;
       default :
          nObjLen = IDlen[nObjType];
@@ -234,7 +234,7 @@ int CObjSet::GetObjLenByID(BYTE nObjType, WORD nObjID)
          nSubType = pProSet->GetSubType(nObjType, nObjID);
          return SubIDlen[nObjType][nSubType];
       case 0 : // misc type
-         return (nObjID == 1 || nObjID == 12) ? 88 : 104;
+         return (nObjID >= 16 && nObjID <= 23) ? 104 : 88;   //(nObjID == 1 || nObjID == 12) ? 88 : 104;      //
       default :
          return IDlen[nObjType];
    }
@@ -289,7 +289,7 @@ int CObjSet::GetFullType(void)
       case wall_ID:
          return OWalls;
       case misc_ID:
-         return (nObjID == 1 || nObjID == 12) ? OGenericMisc : OExitGrid;
+         return (nObjID >= 16 && nObjID <= 23) ? OExitGrid : OGenericMisc;   //(nObjID == 1 || nObjID == 12) ? OGenericMisc : OExitGrid;
    }
 }
 //---------------------------------------------------------------------------

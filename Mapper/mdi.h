@@ -35,10 +35,8 @@ class TfrmMDI : public TForm
 __published:	// IDE-managed Components
         TControlBar *cb;
         TToolBar *tb;
-        TSpeedButton *btnNew;
         TSpeedButton *btnOpen;
         TSpeedButton *btnSave;
-        TSpeedButton *btnOpenPrj;
         TOpenDialog *OpenDialog1;
         TToolBar *tbcurs;
         TSpeedButton *btnselect1;
@@ -68,6 +66,7 @@ __published:	// IDE-managed Components
         TSpeedButton *btnSaiBlock;
         TSpeedButton *btnEGBlock;
         TSpeedButton *btnObjSelfBlock;
+        TToolButton *ToolButton1;
         void __fastcall btnOpenClick(TObject *Sender);
         void __fastcall btnhandClick(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);

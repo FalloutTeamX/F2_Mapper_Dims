@@ -64,12 +64,12 @@ void CFrmSet::LoadLocalFRMs(void)
       for (x = 0; x < frmEnv->pMap->TilesSizeX; x++)
       {
          nFrmID = frmEnv->pTileSet->GetFloorID(x, y);
-         nFrmID &= 0x0FFF;
+         //nFrmID &= 0x0FFF;   //отключаем ограничение на 4095
          LoadFRM(pUtil->GetFRMFileName(tile_ID,
                           pLstFiles->pFRMlst[tile_ID]->Strings[nFrmID]),
                                                          tile_ID, nFrmID, true);
          nFrmID = frmEnv->pTileSet->GetRoofID(x, y);
-         nFrmID &= 0x0FFF;
+         //nFrmID &= 0x0FFF;   //отключаем ограничение на 4095
          LoadFRM(pUtil->GetFRMFileName(tile_ID,
                           pLstFiles->pFRMlst[tile_ID]->Strings[nFrmID]),
                                                          tile_ID, nFrmID, true);

@@ -1,11 +1,11 @@
 object AboutBox: TAboutBox
-  Left = 461
-  Top = 376
+  Left = 282
+  Top = 331
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'About'
-  ClientHeight = 140
-  ClientWidth = 298
+  ClientHeight = 329
+  ClientWidth = 456
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -146,25 +146,31 @@ object AboutBox: TAboutBox
   object Panel1: TPanel
     Left = 8
     Top = 8
-    Width = 281
-    Height = 97
+    Width = 441
+    Height = 315
     BevelInner = bvRaised
     BevelOuter = bvLowered
     ParentColor = True
     TabOrder = 0
     object ProductName: TLabel
-      Left = 8
-      Top = 8
-      Width = 68
-      Height = 13
+      Left = 46
+      Top = 14
+      Width = 95
+      Height = 16
       Alignment = taCenter
-      Caption = 'Dims Mapper2'
+      Caption = 'Dims Mapper 2'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       IsControl = True
     end
     object Image1: TImage
-      Left = 243
-      Top = 4
-      Width = 36
+      Left = 6
+      Top = 6
+      Width = 37
       Height = 39
       Picture.Data = {
         055449636F6E0000010002002020100000000000E80200002600000020200000
@@ -296,22 +302,46 @@ object AboutBox: TAboutBox
     end
     object authors: TMemo
       Left = 8
-      Top = 36
-      Width = 265
-      Height = 59
+      Top = 44
+      Width = 427
+      Height = 45
+      BevelKind = bkTile
+      BevelOuter = bvNone
       BorderStyle = bsNone
-      Color = clMenu
+      Color = clInfoBk
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
       Lines.Strings = (
-        'Authors:'
-        'Dims <dims@hot.ee>: code, DirectX 7 support'
-        'ABel <abel@krasu.ru>: DirectX support'
-        'winterheart <azamat.hackimov@gmail.com>: refreshing')
+        ' Authors: Dims <dims@hot.ee>: code, DirectX 7 support'
+        ' ABel <abel@krasu.ru>: DirectX support'
+        ' winterheart <azamat.hackimov@gmail.com>: refreshing')
+      ParentFont = False
       TabOrder = 0
+    end
+    object Memo1: TMemo
+      Left = 8
+      Top = 100
+      Width = 425
+      Height = 207
+      Lines.Strings = (
+        #1057#1087#1080#1089#1086#1082' '#1080#1079#1084#1077#1085#1077#1085#1080#1081':'
+        ''
+        #1056#1072#1089#1096#1080#1088#1077#1085#1072' '#1082#1072#1088#1090#1072' '#1086#1073#1079#1086#1088#1072'.'
+        
+          #1048#1089#1087#1088#1072#1074#1083#1077#1085#1072' '#1086#1096#1080#1073#1082#1072' '#1089' '#1085#1077#1087#1088#1072#1074#1080#1083#1100#1085#1099#1084' '#1086#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077#1084' '#1090#1080#1087#1072' '#1087#1088#1086#1090#1086#1090#1080#1087#1086#1074' Mi' +
+          'sc. '
+        
+          #1059#1073#1088#1072#1085#1086' '#1086#1075#1088#1072#1085#1080#1095#1077#1085#1080#1077' '#1074' '#1082#1086#1083#1080#1095#1077#1089#1090#1074#1077' '#1080#1089#1087#1086#1083#1100#1079#1091#1077#1084#1099#1093' '#1080#1079#1086#1073#1088#1072#1078#1077#1085#1080#1081' Frm '#1076#1083#1103 +
+          ' Tiles.')
+      TabOrder = 1
     end
   end
   object OKButton: TButton
-    Left = 111
-    Top = 111
+    Left = 367
+    Top = 17
     Width = 75
     Height = 25
     Caption = 'OK'

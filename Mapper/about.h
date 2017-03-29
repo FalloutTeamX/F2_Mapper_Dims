@@ -21,6 +21,7 @@ __published:
 	TButton *OKButton;
         TMemo *authors;
         TImage *Image1;
+        TMemo *Memo1;
 private:
 public:
 	virtual __fastcall TAboutBox(TComponent* AOwner);
