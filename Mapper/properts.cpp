@@ -12,13 +12,13 @@
 #pragma resource "*.dfm"
 TfrmProperties *frmProperties;
 //------- ALL OBJECTS TYPE ----------
-String sAllList[22] ={"[0x00] Unknown1", "[0x04] Object Position", "[0x08] X offset", "[0x0C] Y offset",
+String sAllList[22] ={"[0x00] Unknown1", "[0x04] Object Hex Position", "[0x08] X offset", "[0x0C] Y offset",
                           "[0x10] Unknown4", "[0x14] Unknown5", "[0x18] Frame Number",
                           "[0x1C] Object direction", "[0x20] Object FRM ID",
-                          "[0x24] Unknown Flags", "[0x28] Level", "[0x2C] Proto ID", "[0x30] Unknown6",
+                          "[0x24] Object Flags", "[0x28] Map Level", "[0x2C] Proto ID", "[0x30] Unknown6",
                           "[0x34] Unknown7", "[0x38] Unknown8", "[0x3C] Unknown9",
-                          "[0x40] PID of Map Scripts", "[0x44] Map script ID",
-                          "[0x48] Sub Items", "[0x4C] Unknown10", "[0x50] Unknown11", "[0x54] Unknown12"};
+                          "[0x40] PID of Map Scripts", "[0x44] Script ID",
+                          "[0x48] Sub Items Count", "[0x4C] Unknown10", "[0x50] Unknown11", "[0x54] Unknown12"};
 
 String sList[17][10] =  {"", "", "", "", "", "", "", "", "", "",                //0
                          "", "", "", "", "", "", "", "", "", "",                //1
@@ -34,7 +34,7 @@ String sList[17][10] =  {"", "", "", "", "", "", "", "", "", "",                
                          "[0x58] Unknown1", "", "", "", "", "", "", "", "", "",        //6
                          /*------- CRITTERS ---------------*/
                          "[0x58] Unknown1", "[0x5C] Unknown2", "[0x60] Unknown3", "[0x64] Unknown4",        //7
-                         "[0x68] Critter AI", "[0x6C] Group ID", "[0x70] Unknown5", "[0x74] Hit points",    //7
+                         "[0x68] Packet AI", "[0x6C] Team ID", "[0x70] Unknown5", "[0x74] Current Hit points",    //7
                          "[0x78] Unknown6", "[0x7C] Unknown7",                                //7
                          /*------- SCENERY :: PORTAL ------*/
                          "[0x58] Unknown1", "", "", "", "", "", "", "", "", "",        //8
@@ -278,6 +278,7 @@ void __fastcall TfrmProperties::FlagClick(TObject *Sender)
    (flag32->Checked ? 0x80000000 : 0);
    pObjSet->SetFlags(dwFlags);
    RefreshValues();
+   frmEnv->RedrawMap(true);
 }
 //---------------------------------------------------------------------------
 void TfrmProperties::ListRefresh(void)
@@ -342,9 +343,11 @@ void TfrmProperties::RefreshValues(void)
       {
          ListItem = lv->Items->Item[i];
          ListItem->SubItems->Clear();
-//         ListItem->SubItems->Add((String)(int)pObjSet->GetObjInfo(i));
          Val = (int)pObjSet->GetObjInfo(i);
-         ListItem->SubItems->Add(Format("0x%.8x", ARRAYOFCONST(((int)Val))));
+         if (cbHex->Checked)
+            ListItem->SubItems->Add(Format("0x%.8x", ARRAYOFCONST(((int)Val))));
+         else
+            ListItem->SubItems->Add((String)Val);
       }
       pObjSet->SetObj(pTempObj);
    }
@@ -404,6 +407,11 @@ void __fastcall TfrmProperties::sb1Click(TObject *Sender)
    RefreshValues();
    frmEnv->RedrawMap(true);
    frmEnv->SetButtonSave(true);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmProperties::cbHexClick(TObject *Sender)
+{
+   ListRefresh();
 }
 //---------------------------------------------------------------------------
 

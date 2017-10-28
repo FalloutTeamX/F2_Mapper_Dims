@@ -24,6 +24,8 @@
 #include "proset.h"
 #include "msg.h"
 #include "properts.h"
+#include "rndobj.h"
+
 const crHandCursor = 1;
 const crHandTakeCursor = 2;
 const crCrossCursor = 3;
@@ -66,7 +68,28 @@ __published:	// IDE-managed Components
         TSpeedButton *btnSaiBlock;
         TSpeedButton *btnEGBlock;
         TSpeedButton *btnObjSelfBlock;
-        TToolButton *ToolButton1;
+        TToolButton *s7;
+        TSpeedButton *btnBlockTop;
+        TToolButton *s2;
+        TToolButton *s3;
+        TToolButton *s4;
+        TToolButton *s5;
+        TToolButton *s6;
+        TToolBar *tbPaint;
+        TSpeedButton *btnDrawRndObj;
+        TToolButton *s1;
+        TComboBox *PresetObj;
+        TToolButton *s0;
+        TSpeedButton *btnDrawSFBlock;
+        TSpeedButton *btnDrawSBlock;
+        TSpeedButton *btnDrawSAI;
+        TSpeedButton *btnDrawWFBlock;
+        TSpeedButton *btnDrawWBlock;
+        TSpeedButton *btnNone;
+        TToolButton *s8;
+        TSpeedButton *btnHEX;
+        TSpeedButton *btnUndo;
+
         void __fastcall btnOpenClick(TObject *Sender);
         void __fastcall btnhandClick(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
@@ -96,6 +119,21 @@ __published:	// IDE-managed Components
         void __fastcall btnObjBlockClick(TObject *Sender);
         void __fastcall btnLightBlockClick(TObject *Sender);
         void __fastcall btnObjSelfBlockClick(TObject *Sender);
+        void __fastcall btnBlockTopClick(TObject *Sender);
+        void __fastcall btnDrawRndObjClick(TObject *Sender);
+        void __fastcall PresetObjChange(TObject *Sender);
+        void __fastcall PresetObjKeyDown(TObject *Sender, WORD &Key,
+               TShiftState Shift);
+        void __fastcall PresetObjKeyUp(TObject *Sender, WORD &Key,
+              TShiftState Shift);
+        void __fastcall btnDrawSFBlockClick(TObject *Sender);
+        void __fastcall btnDrawSBlockClick(TObject *Sender);
+        void __fastcall btnDrawSAIClick(TObject *Sender);
+        void __fastcall btnDrawWFBlockClick(TObject *Sender);
+        void __fastcall btnDrawWBlockClick(TObject *Sender);
+        void __fastcall btnUndoClick(TObject *Sender);
+        void __fastcall btnHEXClick(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
         CLog *pLog;
@@ -107,7 +145,10 @@ public:		// User declarations
         CFrmSet *pFrmSet;
         CProSet *pProSet;
         CMsg *pMsg;
+        TList *RndObj; //CRandomObj *pRndObj;
         int iPos; // for Progress Bar
+        int mainHeight, mainWidth;
+
 //        IDirectDraw *dd;
         LPDIRECTDRAW7 pDD;
 

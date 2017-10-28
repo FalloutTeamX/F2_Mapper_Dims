@@ -5,7 +5,6 @@
 #include "pro.h"
 #include "mdi.h"
 #include "utilites.h"
-
 //---------------------------------------------------------------------------
 CPro::CPro(void)
 {
@@ -47,6 +46,22 @@ DWORD CPro::GetSubType(void)
 DWORD CPro::GetFlags(void)
 {
    return pUtil->GetDW((DWORD *)&data[0x14]);
+}
+//---------------------------------------------------------------------------
+DWORD CPro::GetHitPoint(void)
+{
+   DWORD base = pUtil->GetDW((DWORD *)&data[0x4C]);
+   return base + pUtil->GetDW((DWORD *)&data[0xD8]);
+}
+//---------------------------------------------------------------------------
+DWORD CPro::GetAIPacket(void)
+{
+   return pUtil->GetDW((DWORD *)&data[0x24]);
+}
+//---------------------------------------------------------------------------
+DWORD CPro::GetTeamID(void)
+{
+   return pUtil->GetDW((DWORD *)&data[0x28]);
 }
 //---------------------------------------------------------------------------
 CPro::~CPro()

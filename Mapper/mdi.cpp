@@ -9,7 +9,9 @@
 #include "log.h"
 #include "macros.h"
 #include "about.h"
+
 #include <ddraw.h>
+#include <inifiles.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -26,6 +28,7 @@ __fastcall TfrmMDI::TfrmMDI(TComponent* Owner)
    frmPBar = NULL;
    pDD = NULL;
    pUtil = new CUtilites();
+
    pUtil->InitDirectories();
    pLog = new CLog(ExtractFilePath(Application->ExeName) + "\\mapper.log");
    this->OpenDialog1->InitialDir = pUtil->DataDir + "\\maps";
@@ -34,11 +37,31 @@ __fastcall TfrmMDI::TfrmMDI(TComponent* Owner)
    Screen->Cursors[crCrossCursor] = LoadCursor(HInstance, "cross");
    Screen->Cursors[crMyPenCursor] = LoadCursor(HInstance, "mypen");
    Screen->Cursors[crMoveCursor] = LoadCursor(HInstance, "move");
+
+   TIniFile *iniFile = new TIniFile(pUtil->MapperDir + "\\DrawObject.ini");
+   iniFile->ReadSections(PresetObj->Items);
+   int count = PresetObj->Items->Count;
+
+   RndObj = new TList;
+   RndObj->Capacity = count;
+
+   for (int i = 0; i < count; i++)
+   {
+     String value = iniFile->ReadString(PresetObj->Items->Strings[i], "IDList", NULL);
+     if (value != NULL)
+         RndObj->Add(new CRandomObj(value));
+     else
+         RndObj->Add(new CRandomObj("-1"));
+   }
+
+   PresetObj->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::FormCreate(TObject *Sender)
 {
    this->WindowState = wsMaximized;
+   mainWidth = 0;
+   mainHeight = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::FormDestroy(TObject *Sender)
@@ -51,6 +74,7 @@ void __fastcall TfrmMDI::FormDestroy(TObject *Sender)
    if (pMsg) delete pMsg;
    if (pDD) pDD->Release();
    if (pLog) delete pLog;
+   if (RndObj) delete RndObj;
 }
 //---------------------------------------------------------------------------
 bool TfrmMDI::InitClasses(void)
@@ -133,6 +157,12 @@ bool TfrmMDI::InitClasses(void)
          return false;
       }
    }
+
+   if (this->WindowState == wsMaximized && mainHeight == 0 && mainWidth == 0) {
+        mainHeight = this->Height;
+        mainWidth =  this->Width;
+   }
+
    return true;
 }
 //---------------------------------------------------------------------------
@@ -154,6 +184,8 @@ void __fastcall TfrmMDI::btnOpenClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnSaveClick(TObject *Sender)
 {
+   String fileMap = ExtractFileName(OpenDialog1->FileName.UpperCase());
+
    HANDLE h_out = CreateFile(OpenDialog1->FileName.c_str(),
 		GENERIC_WRITE,
 		FILE_SHARE_WRITE,
@@ -161,12 +193,18 @@ void __fastcall TfrmMDI::btnSaveClick(TObject *Sender)
 		CREATE_ALWAYS,
 		FILE_ATTRIBUTE_NORMAL,
 		NULL);
+
+   for (int n = 0; n < 16; n++)
+      frmEnv->pMap->mapvars.mapname[n] = (n < fileMap.Length()) ? (char)fileMap[n + 1] : 0;
+
    frmEnv->ClearSelection();
    frmEnv->pMap->SaveToFile(h_out);
    frmEnv->pTileSet->SaveToFile(h_out);
    frmEnv->pObjSet->SaveToFile(h_out);
    CloseHandle(h_out);
    frmEnv->SetButtonSave(false);
+
+   frmEnv->MapCaptionInfo();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnSaveAsClick(TObject *Sender)
@@ -257,44 +295,76 @@ void __fastcall TfrmMDI::btnmoveClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnselect1Click(TObject *Sender)
 {
+   if (frmEnv->SelectMode == SELECT_ROOF)
+      return;
+   btnDrawRndObj->Down = false;
+   frmEnv->RandomObjState(false);
+
    frmEnv->imgMap->Cursor = (TCursor)crCrossCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR || frmEnv->SelectMode == MOVE_OBJ) {
+       frmEnv->ClearFloorSelection(false);
+       frmEnv->ClearObjSelection(true);
+   }
    frmEnv->SelectMode = SELECT_ROOF;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnselect2Click(TObject *Sender)
 {
+   if (frmEnv->SelectMode == SELECT_OBJ)
+      return;
+
    frmEnv->imgMap->Cursor = (TCursor)crCrossCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR || frmEnv->SelectMode == MOVE_OBJ) {
+      frmEnv->ClearFloorSelection(false);
+      frmEnv->ClearRoofSelection(true);
+   }
    frmEnv->SelectMode = SELECT_OBJ;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnselect3Click(TObject *Sender)
 {
+   if (frmEnv->SelectMode == SELECT_FLOOR)
+      return;
+
+   btnDrawRndObj->Down = false;
+   frmEnv->RandomObjState(false);
+
    frmEnv->imgMap->Cursor = (TCursor)crCrossCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR || frmEnv->SelectMode == MOVE_OBJ) {
+         frmEnv->ClearRoofSelection(false);
+         frmEnv->ClearObjSelection(true);
+      }
    frmEnv->SelectMode = SELECT_FLOOR;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnpen1Click(TObject *Sender)
 {
+   btnDrawRndObj->Down = false;
+   frmEnv->RandomObjState(false);
+
    frmEnv->imgMap->Cursor = (TCursor)crMyPenCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR)
+      frmEnv->ClearSelection();
    frmEnv->SelectMode = DRAW_FLOOR;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnpen2Click(TObject *Sender)
 {
    frmEnv->imgMap->Cursor = (TCursor)crMyPenCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR)
+      frmEnv->ClearSelection();
    frmEnv->SelectMode = DRAW_OBJ;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnpen3Click(TObject *Sender)
 {
+   btnDrawRndObj->Down = false;
+   frmEnv->RandomObjState(false);
+
    frmEnv->imgMap->Cursor = (TCursor)crMyPenCursor;
+   if (frmEnv->SelectMode <= SELECT_FLOOR)
+      frmEnv->ClearSelection();
    frmEnv->SelectMode = DRAW_ROOF;
-   frmEnv->ClearSelection();
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmMDI::btnConfigClick(TObject *Sender)
@@ -339,4 +409,99 @@ void __fastcall TfrmMDI::btnObjSelfBlockClick(TObject *Sender)
    frmEnv->RedrawMap(true);
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TfrmMDI::btnBlockTopClick(TObject *Sender)
+{
+   frmEnv->blockOnTop = btnBlockTop->Down;
+   frmEnv->RedrawMap(true);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawRndObjClick(TObject *Sender)
+{
+   frmEnv->RandomObjState(btnDrawRndObj->Down);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::PresetObjChange(TObject *Sender)
+{
+    if (btnDrawRndObj->Down) {
+      btnpen2->Down = true;
+      btnpen2->Click();
+      frmEnv->randomObject = PresetObj->ItemIndex;
+      frmEnv->ObjectRandomDraw(PresetObj->ItemIndex);
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::PresetObjKeyDown(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+      frmEnv->FormKeyDown(Sender, Key, Shift);
+      Key = 0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::PresetObjKeyUp(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+      frmEnv->FormKeyUp(Sender, Key, Shift);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawSFBlockClick(TObject *Sender)
+{
+   if (btnDrawSFBlock->Down) {
+      btnObjBlock->Down = true;
+      btnObjBlock->Click();
+      frmEnv->DrawBlock(obj_thru_blockID);
+   } else
+       frmEnv->DrawBlock(-1);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawSBlockClick(TObject *Sender)
+{
+   if (btnDrawSBlock->Down) {
+      btnObjBlock->Down = true;
+      btnObjBlock->Click();
+      frmEnv->DrawBlock(obj_blockID);
+   } else
+       frmEnv->DrawBlock(-1);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawSAIClick(TObject *Sender)
+{
+    if (btnDrawSAI->Down) {
+      btnSaiBlock->Down = true;
+      btnSaiBlock->Click();
+      frmEnv->DrawBlock(SAI_blockID);
+    } else
+       frmEnv->DrawBlock(-1);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawWFBlockClick(TObject *Sender)
+{
+    if (btnDrawWFBlock->Down) {
+      btnWallBlock->Down = true;
+      btnWallBlock->Click();
+      frmEnv->DrawBlock(wall_blockID);
+    } else
+       frmEnv->DrawBlock(-1);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnDrawWBlockClick(TObject *Sender)
+{
+    if (btnDrawWBlock->Down) {
+      btnWallBlock->Down = true;
+      btnWallBlock->Click();
+      frmEnv->DrawBlock(wall_see_blockID);
+    } else
+      frmEnv->DrawBlock(-1);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnUndoClick(TObject *Sender)
+{
+    if (frmEnv != NULL)
+      frmEnv->UndoDelete(true);
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMDI::btnHEXClick(TObject *Sender)
+{
+   frmEnv->bShowObj[hex_ID] = btnHEX->Down;
+   frmEnv->RedrawMap(true);
+}
+//---------------------------------------------------------------------------

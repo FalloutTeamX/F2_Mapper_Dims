@@ -63,6 +63,7 @@ void __fastcall TfrmConfig::btnOKClick(TObject *Sender)
    pUtil->StringConvert = this->chb->Checked;
    pUtil->SetRegInfo("\\SOFTWARE\\Dims\\mapper", "ConvertStrings", pUtil->StringConvert);
    frmMDI->OpenDialog1->InitialDir = pUtil->DataDir;
+   pUtil->AllowPlaced = this->cbAllow->Checked;
 }
 //---------------------------------------------------------------------------
 void TfrmConfig::InitDAT(void)

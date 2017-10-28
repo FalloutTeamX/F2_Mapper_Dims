@@ -19,6 +19,9 @@ public:
    WORD GetInvFrmID(void);
    DWORD GetSubType(void);
    DWORD GetFlags(void);
+   DWORD GetHitPoint(void);
+   DWORD GetAIPacket(void);
+   DWORD GetTeamID(void);
 
    CPro(void);
    virtual ~CPro();

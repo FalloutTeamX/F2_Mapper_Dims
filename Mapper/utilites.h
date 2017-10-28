@@ -19,6 +19,7 @@ public:
    // Should we convert string from OEM to ANSI?
    // TRUE - yes; FALSE - no
    bool StringConvert;
+   bool AllowPlaced;
    TColor selColor;
 
    TDatFile *pPatchDAT, *pMasterDAT, *pCritterDAT;
@@ -56,7 +57,7 @@ public:
    String GetDescription(String str);
    void RetranslateString(char *ptr);
    int GetBlockType(BYTE nProObjType, WORD nProID);
-   void GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID);
+   void GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID, bool ThruFlags);
    DWORD GetIndexBySuffix(String Suffix);
    String GetDxError(DWORD dwErrCode);
 

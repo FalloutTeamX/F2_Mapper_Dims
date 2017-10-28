@@ -50,14 +50,22 @@ void CFrmSet::LoadLocalFRMs(void)
    BYTE nObjType;
    frmMDI->iPos = 0;
    BYTE *pObj, *pObjChild;
+
 //-------------------LOAD INTERFACE--------------------
    LoadFRM("exitgrid.frm", intrface_ID, EG_blockID, true);
-   LoadFRM("sai.frm", intrface_ID, SAI_blockID, true);
-   LoadFRM("secwall.frm", intrface_ID, wall_blockID, true);
+   LoadFRM("saiblock.frm", intrface_ID, SAI_blockID, true);
+   LoadFRM("wallblockF.frm", intrface_ID, wall_see_blockID, true);      //flags thru
    LoadFRM("objblock.frm", intrface_ID, obj_blockID, true);
    LoadFRM("light.frm", intrface_ID, light_blockID, true);
-   LoadFRM("scrblk.frm", intrface_ID, scroll_blockID, true);
-   LoadFRM("art//intrface//msef002.frm", intrface_ID, obj_self_blockID, true);
+   LoadFRM("scrblock.frm", intrface_ID, scroll_blockID, true);
+   LoadFRM("selfblock.frm", intrface_ID, obj_self_blockID, true);           //"art\\intrface\\msef002.frm"
+   LoadFRM("wallblock.frm", intrface_ID, wall_blockID, true);
+   LoadFRM("objblockF.frm", intrface_ID, obj_see_blockID, true);        //flags thru
+   LoadFRM("selfblockF.frm", intrface_ID, obj_thru_blockID, true);      //flags thru
+   LoadFRM("HEX.frm", intrface_ID, hex_ID, true);
+   LoadFRM("objhex.frm", intrface_ID, obj_hexID, true);
+   LoadFRM("cursorhex.frm", intrface_ID, cursor_hexID, true);
+
 //-------------------LOAD LOCAL TILES--------------------
    for (y = 0; y < frmEnv->pMap->TilesSizeY; y++)
    {
@@ -190,8 +198,11 @@ void CFrmSet::LoadFRM(String sFile, BYTE nFrmType, WORD nFrmID, bool bLocal)
          //Получаем смещение по У относительно преведущего кадра
          l_pFRM->foffY[nDir][nFrame] =
                                  pUtil->GetW((WORD *)(framesdata + dwPtr + 10));
-         //Считываем кадр и пробразовываем в HBITMAP
-         l_pFRM->LoadData(nDir, nFrame, framesdata + dwPtr + 12);
+         try { //Считываем кадр и пробразовываем в HBITMAP
+         l_pFRM->LoadData(nDir, nFrame, framesdata + dwPtr + 12);   //TODO: Баг при чтении фрм баг в функции LoadData
+         } catch (Exception &exception) {
+            break;
+         }
          //Увеличиваем смещение на длинну кадра для обработки следующего
          dwPtr += (12 + dwPixDataSize);
       }

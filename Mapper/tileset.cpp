@@ -108,7 +108,8 @@ void CTileSet::ClearFloorSelection(void)
    SelectedFloorY1 = -1;
    SelectedFloorX2 = -1;
    SelectedFloorY2 = -1;
-   dwSelection = NONE_SELECTED;
+   if (dwSelection == floor_ID)
+      dwSelection = NONE_SELECTED;
 }
 //------------------------------------------------------------------------------
 void CTileSet::ClearRoofSelection(void)
@@ -117,7 +118,8 @@ void CTileSet::ClearRoofSelection(void)
    SelectedRoofY1 = -1;
    SelectedRoofX2 = -1;
    SelectedRoofY2 = -1;
-   dwSelection = NONE_SELECTED;
+   if (dwSelection == roof_ID)
+      dwSelection = NONE_SELECTED;
 }
 //------------------------------------------------------------------------------
 void CTileSet::SaveToFile(HANDLE h_map)

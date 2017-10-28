@@ -8,27 +8,25 @@ USEFORM("properts.cpp", frmProperties);
 USEFORM("config.cpp", frmConfig);
 USEFORM("change.cpp", fmChange);
 USEFORM("about.cpp", AboutBox);
+USEFORM("info.cpp", frmInfo);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
         try
         {
-                 Application->Initialize();
-                 Application->Title = "Mapper";
-                 Application->CreateForm(__classid(TfrmMDI), &frmMDI);
-                 Application->CreateForm(__classid(TfrmProperties), &frmProperties);
-                 Application->CreateForm(__classid(TfrmConfig), &frmConfig);
-                 Application->CreateForm(__classid(TfmChange), &fmChange);
-                 Application->Run();
+            Application->Initialize();
+            Application->Title = "Mapper";
+            Application->CreateForm(__classid(TfrmMDI), &frmMDI);
+            Application->CreateForm(__classid(TfrmProperties), &frmProperties);
+            Application->CreateForm(__classid(TfrmConfig), &frmConfig);
+            Application->CreateForm(__classid(TfmChange), &fmChange);
+            Application->CreateForm(__classid(TfrmInfo), &frmInfo);
+            Application->Run();
         }
         catch (Exception &exception)
         {
-                 Application->ShowException(&exception);
+            Application->ShowException(&exception);
         }
         return 0;
 }
 //---------------------------------------------------------------------------
-
-
-
-

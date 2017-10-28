@@ -255,6 +255,24 @@ signed short CFrame::GetDoffY(WORD nDir)
       return doffY[0];
 }
 //---------------------------------------------------------------------------
+signed short CFrame::GetFoffX(WORD nDir, WORD nFrame)
+{
+   if (!pBMP) return 0;
+   if (nDir <= nDirTotal - 1 && nFrame <= nFrames - 1)
+      return foffX[nDir][nFrame];
+   else
+      return foffX[0][0];
+}
+//---------------------------------------------------------------------------
+signed short CFrame::GetFoffY(WORD nDir, WORD nFrame)
+{
+   if (!pBMP) return 0;
+   if (nDir <= nDirTotal - 1 && nFrame <= nFrames - 1)
+      return foffY[nDir][nFrame];
+   else
+      return foffY[0][0];
+}
+//---------------------------------------------------------------------------
 CFrame::~CFrame()
 {
    for (int nDir = 0; nDir < nDirTotal; nDir++)

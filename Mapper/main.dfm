@@ -1,8 +1,8 @@
 object frmEnv: TfrmEnv
-  Left = 2
-  Top = 86
-  Width = 1282
-  Height = 997
+  Left = 47
+  Top = 140
+  Width = 863
+  Height = 750
   Caption = 'Map'
   Color = 4194304
   Font.Charset = DEFAULT_CHARSET
@@ -13,92 +13,18 @@ object frmEnv: TfrmEnv
   FormStyle = fsMDIChild
   OldCreateOrder = False
   Position = poDesktopCenter
+  Scaled = False
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
   OnDestroy = FormDestroy
-  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
-  object Shape7: TShape
-    Left = 1164
-    Top = 329
-    Width = 110
-    Height = 25
-    Brush.Style = bsClear
-    Pen.Color = 7904687
-    Pen.Width = 15
-    Shape = stRoundRect
-  end
-  object Shape1: TShape
-    Left = 1164
-    Top = 343
-    Width = 110
-    Height = 468
-    Brush.Color = clBlack
-    Pen.Color = 7904687
-    Pen.Width = 3
-  end
-  object Shape9: TShape
-    Left = 728
-    Top = 814
-    Width = 21
-    Height = 129
-    Brush.Style = bsClear
-    Pen.Color = 7904687
-    Pen.Width = 10
-    Shape = stRoundRect
-  end
-  object Shape10: TShape
-    Left = 2
-    Top = 814
-    Width = 19
-    Height = 127
-    Brush.Style = bsClear
-    Pen.Color = 7904687
-    Pen.Width = 10
-    Shape = stRoundRect
-  end
-  object Shape11: TShape
-    Left = 8
-    Top = 814
-    Width = 735
-    Height = 129
-    Brush.Color = clBlack
-    Pen.Color = 7904687
-    Pen.Width = 3
-  end
-  object Shape8: TShape
-    Left = 15
-    Top = 836
-    Width = 28
-    Height = 55
-    Brush.Color = 4194368
-    Pen.Color = clBtnFace
-  end
-  object Shape6: TShape
-    Left = 1170
-    Top = 720
-    Width = 99
-    Height = 83
-    Brush.Color = 6838104
-    Pen.Color = clBtnFace
-  end
-  object Shape4: TShape
-    Left = 1164
-    Top = 2
-    Width = 110
-    Height = 25
-    Brush.Style = bsClear
-    Pen.Color = 7904687
-    Pen.Width = 15
-    Shape = stRoundRect
-  end
   object Shape3: TShape
     Left = 1
-    Top = 2
-    Width = 1160
-    Height = 25
+    Top = 0
+    Width = 725
+    Height = 20
     Brush.Style = bsClear
     Pen.Color = 7904687
     Pen.Width = 15
@@ -106,48 +32,16 @@ object frmEnv: TfrmEnv
   end
   object shp: TShape
     Left = 1
-    Top = 16
-    Width = 1160
-    Height = 795
+    Top = 12
+    Width = 725
+    Height = 488
     Brush.Color = clBlack
     Pen.Color = 7904687
     Pen.Width = 3
-  end
-  object Shape2: TShape
-    Left = 1164
-    Top = 14
-    Width = 110
-    Height = 310
-    Brush.Color = clBlack
-    Pen.Color = 7904687
-    Pen.Width = 3
-  end
-  object imgMiniMap: TImage
-    Left = 1169
-    Top = 21
-    Width = 100
-    Height = 300
-    OnMouseDown = imgMiniMapMouseDown
-    OnMouseMove = imgMiniMapMouseMove
-    OnMouseUp = imgMiniMapMouseUp
-  end
-  object lblMM: TLabel
-    Left = 1171
-    Top = 3
-    Width = 51
-    Height = 13
-    Caption = 'Mini map'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
   end
   object lblInfo: TLabel
     Left = 9
-    Top = 3
+    Top = 1
     Width = 3
     Height = 13
     Font.Charset = DEFAULT_CHARSET
@@ -158,246 +52,106 @@ object frmEnv: TfrmEnv
     ParentFont = False
     Transparent = True
   end
-  object btnWorld: TSpeedButton
-    Left = 17
-    Top = 839
-    Width = 23
-    Height = 22
-    Hint = 'Show global objects'
-    GroupIndex = 1
-    Down = True
-    Flat = True
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    Glyph.Data = {
-      36030000424D3603000000000000360000002800000010000000100000000100
-      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0070801020200000000000000000000C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00202000000002075A50A
-      2E450A2E452782B70A2E450F10010F1001C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C00000002075A52075A50A2E450A2E45369BD7369BD72782B70A2E450A2E
-      450C0D01C0C0C0C0C0C0C0C0C0C0C0C00000002075A52C8FC90A2E450E44660A
-      2E45369BD7369BD7369BD72782B70E44660E44660F1001C0C0C0C0C0C0C0C0C0
-      0000002782B70A2E450E44660E44660A2E459ACFF37EC3F175BCEB369BD72782
-      B70E4466020200C0C0C0C0C0C00000002782B72C8FC90A2E450E4466176CA30E
-      44660A2E459ACFF375BCEB3EA8E62782B7176CA30E4466000000C0C0C0000000
-      2C8FC90A2E450E4466176CA3176CA3176CA30A2E458FD3FF93CCF075BCEB369B
-      D72782B70E4466000000C0C0C00000002C8FC90A2E450E4466176CA3176CA317
-      6CA30E44660A2E4593CCF093CCF03EA8E6369BD70A2E45000000C0C0C0000000
-      0E446668C5FD0A2E450E44660E44660E44660E44660A2E4593CCF093CCF03EA8
-      E62782B72075A5000000C0C0C00000000E44662C8FC968C5FD0A2E450A2E450A
-      2E450A2E45B7DEF893CCF00A2E450A2E450A2E450A2E45000000C0C0C0C0C0C0
-      0000000E446656C2FF8FD3FF8FD3FFB7DEF8B7DEF893CCF00A2E450E4466176C
-      A30E4466000000C0C0C0C0C0C0C0C0C00000000D5B8A0E446656C2FF8FD3FFA6
-      D6F593CCF00A2E450E4466176CA30E44660A2E45020200C0C0C0C0C0C0C0C0C0
-      C0C0C00000000D5B8A0E446656C2FF56C2FF56C2FF0A2E450E44660E44660A2E
-      45000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00000000000000D5B8A2C
-      8FC92C8FC92C8FC90A2E45000000000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0000000000000000000000000000000C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    OnClick = btnWorldClick
-  end
-  object btnLocal: TSpeedButton
-    Left = 17
-    Top = 865
-    Width = 23
-    Height = 22
-    Hint = 'Show local objects'
-    GroupIndex = 1
-    Flat = True
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    Glyph.Data = {
-      36030000424D3603000000000000360000002800000010000000100000000100
-      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C000000000000000000000000000
-      0000000000000000000000000000000000000000C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C00000000E44650E44650E44650E44650E44650E44650E44650E44650E44
-      65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000186CA2186CA2186CA218
-      6CA2186CA2186CA2186CA2186CA20E4465000000C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0000000186CA23FA5E53FA5E53FA5E53FA5E53FA5E53FA5E5186CA20E44
-      65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000186CA23FA5E53FA5E50A
-      2E450A2E450A2E453FA5E5186CA20E4465000000C0C0C0C0C0C0C0C0C0000000
-      000000000000186CA23FA5E53FA5E50A2E450000000A2E453FA5E53FA5E5186C
-      A2000000000000000000C0C0C0000000186CA2186CA23FA5E50A2E450A2E450A
-      2E450000000A2E450A2E450A2E453FA5E50E44650E4465000000C0C0C0000000
-      A6D6F575BCEB3FA5E50A2E450A2E450A2E450000000A2E450A2E450A2E453FA5
-      E5186CA20E4465000000C0C0C0C0C0C0000000A6D6F575BCEB3FA5E53FA5E50A
-      2E450000000A2E453FA5E53FA5E53FA5E50E4465000000C0C0C0C0C0C0C0C0C0
-      C0C0C0000000A6D6F575BCEB3FA5E50A2E450A2E450A2E453FA5E53FA5E50E44
-      65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000A6D6F575BCEB75BCEB3F
-      A5E53FA5E53FA5E53FA5E50E4465000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0000000A6D6F5A6D6F500000075BCEB75BCEB75BCEB0E4465000000C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C000000000000000000000
-      0000A6D6F50E4465000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000000000C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    OnClick = btnLocalClick
-  end
-  object lblinv: TLabel
-    Left = 1171
-    Top = 330
-    Width = 57
-    Height = 13
-    Caption = 'Inventory'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
-  end
-  object btnAdd: TSpeedButton
-    Left = 1177
-    Top = 727
-    Width = 86
-    Height = 22
-    Caption = 'Add'
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clGreen
-    Font.Height = -11
-    Font.Name = 'Impact'
-    Font.Style = []
-    Glyph.Data = {
-      76010000424D7601000000000000760000002800000020000000100000000100
-      04000000000000010000120B0000120B00001000000000000000000000000000
-      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333000333
-      3333333333777F33333333333309033333333333337F7F333333333333090333
-      33333333337F7F33333333333309033333333333337F7F333333333333090333
-      33333333337F7F33333333333309033333333333FF7F7FFFF333333000090000
-      3333333777737777F333333099999990333333373F3333373333333309999903
-      333333337F33337F33333333099999033333333373F333733333333330999033
-      3333333337F337F3333333333099903333333333373F37333333333333090333
-      33333333337F7F33333333333309033333333333337373333333333333303333
-      333333333337F333333333333330333333333333333733333333}
-    NumGlyphs = 2
-    ParentFont = False
-    OnClick = btnAddClick
-  end
-  object btnRemove: TSpeedButton
-    Left = 1177
-    Top = 775
-    Width = 86
-    Height = 22
-    Caption = 'Remove'
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clMaroon
-    Font.Height = -11
-    Font.Name = 'Impact'
-    Font.Style = []
-    Glyph.Data = {
-      76010000424D7601000000000000760000002800000020000000100000000100
-      04000000000000010000120B0000120B00001000000000000000000000000000
-      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333303333
-      333333333337F33333333333333033333333333333373F333333333333090333
-      33333333337F7F33333333333309033333333333337373F33333333330999033
-      3333333337F337F33333333330999033333333333733373F3333333309999903
-      333333337F33337F33333333099999033333333373333373F333333099999990
-      33333337FFFF3FF7F33333300009000033333337777F77773333333333090333
-      33333333337F7F33333333333309033333333333337F7F333333333333090333
-      33333333337F7F33333333333309033333333333337F7F333333333333090333
-      33333333337F7F33333333333300033333333333337773333333}
-    NumGlyphs = 2
-    ParentFont = False
-    OnClick = btnRemoveClick
-  end
-  object btnChange: TSpeedButton
-    Left = 1177
-    Top = 751
-    Width = 86
-    Height = 22
-    Caption = 'Change'
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clNavy
-    Font.Height = -11
-    Font.Name = 'Impact'
-    Font.Style = []
-    Glyph.Data = {
-      76010000424D7601000000000000760000002800000020000000100000000100
-      04000000000000010000130B0000130B00001000000000000000000000000000
-      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
-      333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
-      300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
-      330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
-      333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
-      339977FF777777773377000BFB03333333337773FF733333333F333000333333
-      3300333777333333337733333333333333003333333333333377333333333333
-      333333333333333333FF33333333333330003333333333333777333333333333
-      3000333333333333377733333333333333333333333333333333}
-    NumGlyphs = 2
-    ParentFont = False
-    OnClick = btnChangeClick
-  end
   object Label1: TLabel
-    Left = 1160
-    Top = 922
-    Width = 109
+    Left = 570
+    Top = 1
+    Width = 151
     Height = 13
-    Caption = 'Mapper fixed by Fakels'
-    Color = 4194304
+    Caption = 'Mapper updated by Fakels'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clSilver
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentColor = False
-    ParentFont = False
-    Transparent = True
-  end
-  object Shape5: TShape
-    Left = 42
-    Top = 836
-    Width = 693
-    Height = 103
-    Brush.Color = clNone
-    Pen.Color = clBtnFace
-  end
-  object Label2: TLabel
-    Left = 17
-    Top = 820
-    Width = 87
-    Height = 13
-    Caption = 'Object Selector'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
     Transparent = True
+  end
+  object KeyControl: TComboBox
+    Left = 15
+    Top = 606
+    Width = 61
+    Height = 21
+    Style = csDropDownList
+    Ctl3D = True
+    ItemHeight = 13
+    ItemIndex = 0
+    ParentCtl3D = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 0
+    Text = 'Control'
+    OnKeyDown = KeyControlKeyDown
+    OnKeyUp = KeyControlKeyUp
+    Items.Strings = (
+      'Control')
+  end
+  object MinimapPanel: TPanel
+    Left = 729
+    Top = 0
+    Width = 115
+    Height = 323
+    BevelOuter = bvNone
+    Color = 4194304
+    TabOrder = 3
+    object Shape4: TShape
+      Left = 0
+      Top = 0
+      Width = 114
+      Height = 18
+      Brush.Style = bsClear
+      Pen.Color = 7904687
+      Pen.Width = 15
+      Shape = stRoundRect
+    end
+    object Shape2: TShape
+      Left = 0
+      Top = 12
+      Width = 114
+      Height = 310
+      Brush.Color = clBlack
+      Pen.Color = 7904687
+      Pen.Width = 3
+    end
+    object lblMM: TLabel
+      Left = 10
+      Top = 1
+      Width = 95
+      Height = 13
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Mini map  [x]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+      OnClick = lblMMClick
+    end
+    object imgMiniMap: TImage
+      Left = 7
+      Top = 17
+      Width = 100
+      Height = 300
+      OnMouseDown = imgMiniMapMouseDown
+      OnMouseMove = imgMiniMapMouseMove
+      OnMouseUp = imgMiniMapMouseUp
+    end
   end
   object imgMap: TPanel
     Left = 6
-    Top = 19
-    Width = 1150
-    Height = 788
+    Top = 17
+    Width = 640
+    Height = 480
     BevelOuter = bvNone
     Color = clBlack
+    Ctl3D = True
     FullRepaint = False
+    Locked = True
+    ParentCtl3D = False
     PopupMenu = popupMap
-    TabOrder = 3
+    TabOrder = 1
     OnClick = imgMapClick
     OnMouseDown = imgMapMouseDown
     OnMouseMove = imgMapMouseMove
@@ -405,133 +159,589 @@ object frmEnv: TfrmEnv
   end
   object sbar: TStatusBar
     Left = 0
-    Top = 944
-    Width = 1274
+    Top = 696
+    Width = 855
     Height = 19
     Panels = <
       item
-        Width = 100
+        Width = 80
       end
       item
-        Width = 100
+        Width = 125
       end
       item
-        Width = 100
+        Width = 80
       end
       item
-        Width = 100
+        Width = 80
       end
       item
         Width = 50
       end>
     SimplePanel = False
   end
-  object imgObj: TPanel
-    Left = 47
-    Top = 839
-    Width = 684
-    Height = 80
+  object InvenPanel: TPanel
+    Left = 728
+    Top = 325
+    Width = 117
+    Height = 313
     BevelOuter = bvNone
-    Color = clBlack
-    FullRepaint = False
+    Color = 4194304
+    TabOrder = 4
+    DesignSize = (
+      117
+      313)
+    object Shape7: TShape
+      Left = 1
+      Top = 0
+      Width = 115
+      Height = 20
+      Brush.Style = bsClear
+      Pen.Color = 7904687
+      Pen.Width = 15
+      Shape = stRoundRect
+    end
+    object Shape1: TShape
+      Left = 1
+      Top = 12
+      Width = 115
+      Height = 300
+      Anchors = [akLeft, akTop, akBottom]
+      Brush.Color = clBlack
+      Pen.Color = 7904687
+      Pen.Width = 3
+    end
+    object Shape6: TShape
+      Left = 5
+      Top = 256
+      Width = 107
+      Height = 52
+      Anchors = [akLeft, akBottom]
+      Brush.Color = 6838104
+      Pen.Color = clBtnFace
+    end
+    object lblinv: TLabel
+      Left = 11
+      Top = 1
+      Width = 90
+      Height = 13
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Inventory'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+    end
+    object btnChange: TSpeedButton
+      Left = 9
+      Top = 262
+      Width = 100
+      Height = 20
+      Anchors = [akLeft, akBottom]
+      Caption = 'Change count'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Impact'
+      Font.Style = []
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
+        300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
+        330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
+        333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
+        339977FF777777773377000BFB03333333337773FF733333333F333000333333
+        3300333777333333337733333333333333003333333333333377333333333333
+        333333333333333333FF33333333333330003333333333333777333333333333
+        3000333333333333377733333333333333333333333333333333}
+      NumGlyphs = 2
+      ParentFont = False
+      Spacing = 8
+      OnClick = btnChangeClick
+    end
+    object btnAdd: TSpeedButton
+      Left = 9
+      Top = 283
+      Width = 50
+      Height = 20
+      Hint = 'Add selected item to object inventory.'
+      Anchors = [akLeft, akBottom]
+      BiDiMode = bdLeftToRight
+      Caption = 'Add'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -11
+      Font.Name = 'Impact'
+      Font.Style = []
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333000333
+        3333333333777F33333333333309033333333333337F7F333333333333090333
+        33333333337F7F33333333333309033333333333337F7F333333333333090333
+        33333333337F7F33333333333309033333333333FF7F7FFFF333333000090000
+        3333333777737777F333333099999990333333373F3333373333333309999903
+        333333337F33337F33333333099999033333333373F333733333333330999033
+        3333333337F337F3333333333099903333333333373F37333333333333090333
+        33333333337F7F33333333333309033333333333337373333333333333303333
+        333333333337F333333333333330333333333333333733333333}
+      NumGlyphs = 2
+      ParentFont = False
+      ParentShowHint = False
+      ParentBiDiMode = False
+      ShowHint = True
+      Spacing = 0
+      OnClick = btnAddClick
+    end
+    object btnRemove: TSpeedButton
+      Left = 59
+      Top = 283
+      Width = 50
+      Height = 20
+      Hint = 'Remove selected item from object inventory.'
+      Anchors = [akLeft, akBottom]
+      Caption = 'Del'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Impact'
+      Font.Style = []
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333303333
+        333333333337F33333333333333033333333333333373F333333333333090333
+        33333333337F7F33333333333309033333333333337373F33333333330999033
+        3333333337F337F33333333330999033333333333733373F3333333309999903
+        333333337F33337F33333333099999033333333373333373F333333099999990
+        33333337FFFF3FF7F33333300009000033333337777F77773333333333090333
+        33333333337F7F33333333333309033333333333337F7F333333333333090333
+        33333333337F7F33333333333309033333333333337F7F333333333333090333
+        33333333337F7F33333333333300033333333333337773333333}
+      NumGlyphs = 2
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Spacing = 0
+      OnClick = btnRemoveClick
+    end
+    object imgInv: TPanel
+      Left = 7
+      Top = 18
+      Width = 85
+      Height = 235
+      Anchors = [akLeft, akTop, akBottom]
+      BevelOuter = bvNone
+      BevelWidth = 2
+      BiDiMode = bdLeftToRight
+      BorderWidth = 1
+      Color = clBlack
+      Ctl3D = True
+      FullRepaint = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentCtl3D = False
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = invPopup
+      ShowHint = True
+      TabOrder = 1
+      OnMouseDown = imgInvMouseDown
+    end
+    object sbINV: TScrollBar
+      Left = 95
+      Top = 18
+      Width = 15
+      Height = 235
+      Anchors = [akLeft, akTop, akBottom]
+      Enabled = False
+      Kind = sbVertical
+      Max = 0
+      PageSize = 0
+      TabOrder = 0
+      TabStop = False
+      OnChange = sbINVChange
+    end
+  end
+  object ObjectPanel: TPanel
+    Left = 0
+    Top = 501
+    Width = 726
+    Height = 139
+    BevelOuter = bvNone
+    Color = 4194304
+    Ctl3D = True
+    ParentCtl3D = False
     TabOrder = 2
-    OnMouseDown = imgObjMouseDown
-  end
-  object sb: TScrollBar
-    Left = 46
-    Top = 920
-    Width = 685
-    Height = 16
-    Enabled = False
-    LargeChange = 8
-    Max = 1
-    PageSize = 0
-    TabOrder = 1
-    TabStop = False
-    OnScroll = sbScroll
-  end
-  object tabc: TTabControl
-    Left = 189
-    Top = 817
-    Width = 531
-    Height = 19
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clMenuText
-    Font.Height = -11
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    HotTrack = True
-    Images = ImageList1
-    ParentFont = False
-    TabOrder = 0
-    Tabs.Strings = (
-      'ITEMS'
-      'CRITTERS'
-      'SCENERY'
-      'WALLS'
-      'TILES'
-      'MISC'
-      'INVENTORY')
-    TabIndex = 0
-    TabStop = False
-    OnChange = tabcChange
-  end
-  object imgInv: TPanel
-    Left = 1168
-    Top = 348
-    Width = 85
-    Height = 186
-    BevelOuter = bvNone
-    Color = clBlack
-    FullRepaint = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 6
-    OnMouseDown = imgInvMouseDown
-  end
-  object sbINV: TScrollBar
-    Left = 1254
-    Top = 351
-    Width = 14
-    Height = 364
-    Enabled = False
-    Kind = sbVertical
-    Max = 0
-    PageSize = 0
-    TabOrder = 5
-    TabStop = False
-    OnChange = sbINVChange
+    DesignSize = (
+      726
+      139)
+    object Shape9: TShape
+      Left = 1
+      Top = 2
+      Width = 725
+      Height = 134
+      Anchors = [akLeft, akTop, akRight]
+      Brush.Color = clBlack
+      Pen.Color = 7904687
+      Pen.Width = 3
+    end
+    object Shape5: TShape
+      Left = 35
+      Top = 27
+      Width = 686
+      Height = 87
+      Anchors = [akLeft, akTop, akRight]
+      Brush.Color = clNone
+      Pen.Color = clBtnFace
+    end
+    object Shape8: TShape
+      Left = 6
+      Top = 27
+      Width = 30
+      Height = 51
+      Brush.Color = 4194368
+      Pen.Color = clBtnFace
+    end
+    object btnWorld: TSpeedButton
+      Left = 9
+      Top = 30
+      Width = 23
+      Height = 22
+      Hint = 'Show all objects'
+      GroupIndex = 1
+      Down = True
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        36030000424D3603000000000000360000002800000010000000100000000100
+        1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0070801020200000000000000000000C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00202000000002075A50A
+        2E450A2E452782B70A2E450F10010F1001C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C00000002075A52075A50A2E450A2E45369BD7369BD72782B70A2E450A2E
+        450C0D01C0C0C0C0C0C0C0C0C0C0C0C00000002075A52C8FC90A2E450E44660A
+        2E45369BD7369BD7369BD72782B70E44660E44660F1001C0C0C0C0C0C0C0C0C0
+        0000002782B70A2E450E44660E44660A2E459ACFF37EC3F175BCEB369BD72782
+        B70E4466020200C0C0C0C0C0C00000002782B72C8FC90A2E450E4466176CA30E
+        44660A2E459ACFF375BCEB3EA8E62782B7176CA30E4466000000C0C0C0000000
+        2C8FC90A2E450E4466176CA3176CA3176CA30A2E458FD3FF93CCF075BCEB369B
+        D72782B70E4466000000C0C0C00000002C8FC90A2E450E4466176CA3176CA317
+        6CA30E44660A2E4593CCF093CCF03EA8E6369BD70A2E45000000C0C0C0000000
+        0E446668C5FD0A2E450E44660E44660E44660E44660A2E4593CCF093CCF03EA8
+        E62782B72075A5000000C0C0C00000000E44662C8FC968C5FD0A2E450A2E450A
+        2E450A2E45B7DEF893CCF00A2E450A2E450A2E450A2E45000000C0C0C0C0C0C0
+        0000000E446656C2FF8FD3FF8FD3FFB7DEF8B7DEF893CCF00A2E450E4466176C
+        A30E4466000000C0C0C0C0C0C0C0C0C00000000D5B8A0E446656C2FF8FD3FFA6
+        D6F593CCF00A2E450E4466176CA30E44660A2E45020200C0C0C0C0C0C0C0C0C0
+        C0C0C00000000D5B8A0E446656C2FF56C2FF56C2FF0A2E450E44660E44660A2E
+        45000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00000000000000D5B8A2C
+        8FC92C8FC92C8FC90A2E45000000000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0000000000000000000000000000000C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+      Margin = 2
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnWorldClick
+    end
+    object btnLocal: TSpeedButton
+      Left = 9
+      Top = 53
+      Width = 23
+      Height = 22
+      Hint = 'Show map objects'
+      GroupIndex = 1
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        36030000424D3603000000000000360000002800000010000000100000000100
+        1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C000000000000000000000000000
+        0000000000000000000000000000000000000000C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C00000000E44650E44650E44650E44650E44650E44650E44650E44650E44
+        65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000186CA2186CA2186CA218
+        6CA2186CA2186CA2186CA2186CA20E4465000000C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0000000186CA23FA5E53FA5E53FA5E53FA5E53FA5E53FA5E5186CA20E44
+        65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000186CA23FA5E53FA5E50A
+        2E450A2E450A2E453FA5E5186CA20E4465000000C0C0C0C0C0C0C0C0C0000000
+        000000000000186CA23FA5E53FA5E50A2E450000000A2E453FA5E53FA5E5186C
+        A2000000000000000000C0C0C0000000186CA2186CA23FA5E50A2E450A2E450A
+        2E450000000A2E450A2E450A2E453FA5E50E44650E4465000000C0C0C0000000
+        A6D6F575BCEB3FA5E50A2E450A2E450A2E450000000A2E450A2E450A2E453FA5
+        E5186CA20E4465000000C0C0C0C0C0C0000000A6D6F575BCEB3FA5E53FA5E50A
+        2E450000000A2E453FA5E53FA5E53FA5E50E4465000000C0C0C0C0C0C0C0C0C0
+        C0C0C0000000A6D6F575BCEB3FA5E50A2E450A2E450A2E453FA5E53FA5E50E44
+        65000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000A6D6F575BCEB75BCEB3F
+        A5E53FA5E53FA5E53FA5E50E4465000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0000000A6D6F5A6D6F500000075BCEB75BCEB75BCEB0E4465000000C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C000000000000000000000
+        0000A6D6F50E4465000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000000000C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnLocalClick
+    end
+    object Shape10: TShape
+      Left = 588
+      Top = 8
+      Width = 50
+      Height = 18
+      Brush.Color = 4194368
+      Pen.Color = clBtnFace
+    end
+    object btnRotateLeft: TSpeedButton
+      Left = 589
+      Top = 9
+      Width = 16
+      Height = 16
+      Hint = 'Selected object rotate to left. Use hot key '#39'<'#39
+      Caption = '<'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clLime
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Layout = blGlyphBottom
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnRotateLeftClick
+    end
+    object btnRotateRight: TSpeedButton
+      Left = 621
+      Top = 9
+      Width = 16
+      Height = 16
+      Hint = 'Select object rotate to right. Use hot key '#39'>'#39
+      Caption = '>'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clLime
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Layout = blGlyphBottom
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnRotateRightClick
+    end
+    object lblDir: TLabel
+      Left = 609
+      Top = 10
+      Width = 8
+      Height = 13
+      Hint = 'Current object rotation [0...5]'
+      Alignment = taCenter
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Transparent = True
+    end
+    object btnItemInfo: TSpeedButton
+      Left = 10
+      Top = 89
+      Width = 20
+      Height = 20
+      Hint = 'Show information items object on map.'
+      Glyph.Data = {
+        06030000424D060300000000000036000000280000000F0000000F0000000100
+        180000000000D0020000C30E0000C30E00000000000000000000FF00FFFF00FF
+        FF00FFFF00FFF3EDEACBB5A8A781699E745AA0775DB1917DD8C8BEF7F3F1FF00
+        FFFF00FFFF00FF000000FF00FFFF00FFFF00FFE3D6CFB0907AAC907ED1CDC9E5
+        F3F7E0ECF0C6C2BFA48676AA8671E2D6CEFF00FFFF00FF000000FF00FFFF00FF
+        E1D1C8B89B8AE8E8E4FAFFFFF3F9FDEEF9F4ECF4F4E8EDF3E4F2F9BEB5B1986E
+        53E2D5CEFF00FF000000FF00FFEDE2DCB99580F7F5F1FFFFFFFFFFFFD8B7A5A5
+        4F29A2502CD7BCADF1FCFFE8F7FFBAAEA7A0775EF5F0EE000000FDFBFAC8AA98
+        D9C4B9FFFFFFFFFFFFFFFFFFEAD4C6AA3217A54226F2EDE3FFFFFFE9EBEDE4F1
+        F69F7E69C5AC9C000000EDE2DBC19B86FDFBFAFFFFFFFFFFFFFFFFFFEDE1D6B9
+        523BB5644CF6F9F3FFFFFFF3F3F2E9F2F6C4BCB8A47D65000000E6D1C4CBA48D
+        FEFDFDFFFFFFFFFFFFFFFFFFEADCD0BC5B3CB56748F1EFE8FFFFFFFCFCFBECF1
+        F3D7D8D8A07961000000E1C8BACEAB97FFFFFFFFFFFFFFFFFFFFFFFFE8D8CBC2
+        5A37B7623FEEEBE3FFFFFFFCFDFDF1F5F7DEE0E4A37E67000000DABFB0CBA994
+        FFFFFFFFFFFFFFFFFFFFFFFFDFC1AFB95D2FBC744FF3EDE9FFFFFFFCFBFCF3F8
+        FCD9D6D8A17A64000000EAD6CACCA38DFFFFFFFFFFFFFFFFFFFFFFFFF6EAE6EB
+        DBD0F2EBE4FFFFFFFFFFFFF9F9FAF7FFFFCBBFB9AE8B75000000FCF8F5DCB49A
+        EFE7DEFFFFFFFFFFFFFFFFFFFDFBFAD5A285D1A085FBF9F8FFFFFFFFFFFFF8FF
+        FFA27D66DBCBC2000000FF00FFF0D9CBE2B392FFFFFFFFFFFFFFFFFFF6EDE7C7
+        6D39BB6634F3EEEBFFFFFFFFFFFFC3AC9DB89885FAF8F7000000FF00FFFFFEFD
+        EECDB8ECC7AAFFFFFCFFFFFFFFFFFFFCF5F0FBF5EFFFFFFFF8F4F1CDB6A7B492
+        7DF7F3F1FF00FF000000FF00FFFF00FFFFFFFEF1D6C3ECC2A4F6DCC4F9E7DAFC
+        EAE0F6E7DEE2CDC0D0B3A2CFB6A8FAF8F6FF00FFFF00FF000000FF00FFFF00FF
+        FF00FFFF00FFF9EBE3F1D2BEF3CBB3F3C9B1ECC5AEE7CDBFF4EDE9FF00FFFF00
+        FFFF00FFFF00FF000000}
+      Margin = 0
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnItemInfoClick
+    end
+    object imgObj: TPanel
+      Left = 37
+      Top = 29
+      Width = 682
+      Height = 83
+      Hint = 
+        'Double-click adds the item to the inventory of the selected obje' +
+        'ct.'
+      Anchors = [akLeft, akTop, akRight]
+      BevelOuter = bvNone
+      Color = clBlack
+      FullRepaint = False
+      Locked = True
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 2
+      OnDblClick = imgObjDblClick
+      OnMouseDown = imgObjMouseDown
+    end
+    object sb: TScrollBar
+      Left = 36
+      Top = 116
+      Width = 684
+      Height = 14
+      Anchors = [akLeft, akTop, akRight]
+      Enabled = False
+      LargeChange = 8
+      Max = 1
+      PageSize = 0
+      TabOrder = 1
+      TabStop = False
+      OnScroll = sbScroll
+    end
+    object tabc: TTabControl
+      Left = 42
+      Top = 8
+      Width = 531
+      Height = 19
+      Hint = 'Object Selector'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      HotTrack = True
+      Images = ImageList1
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      Tabs.Strings = (
+        'ITEMS'
+        'CRITTERS'
+        'SCENERY'
+        'WALLS'
+        'TILES'
+        'MISC'
+        'INVENTORY')
+      TabIndex = 0
+      TabStop = False
+      OnChange = tabcChange
+    end
   end
   object popupMap: TPopupMenu
     OnPopup = popupMapPopup
-    Left = 1185
-    Top = 818
-    object Mapperv09byDims1: TMenuItem
-      Caption = 'Mapper v0.99.2 by Dims'
-      Enabled = False
+    Left = 13
+    Top = 656
+    object piChangeMode: TMenuItem
+      Caption = 'Move <-> Select'
+      Hint = 'To switch between modes.'
+      OnClick = piChangeModeClick
+    end
+    object N4: TMenuItem
+      Caption = '-'
+    end
+    object piPickDrawObject: TMenuItem
+      Caption = 'Pick object to draw'
+      Hint = 'To take the selected object for drawing.'
+      OnClick = piPickDrawObjectClick
+    end
+    object piUseObject: TMenuItem
+      Caption = 'Open/Close object'
+      OnClick = piUseObjectClick
+    end
+    object piTilesToNavigator: TMenuItem
+      Caption = 'Show tiles art in navigator '
+      ShortCut = 80
+      OnClick = piTilesToNavigatorClick
     end
     object N1: TMenuItem
       Caption = '-'
     end
-    object piDelete: TMenuItem
-      Caption = '&Delete'
-      OnClick = piDeleteClick
+    object piProperties: TMenuItem
+      Caption = 'Properties'
+      ShortCut = 13
+      OnClick = piPropertiesClick
     end
     object N2: TMenuItem
       Caption = '-'
     end
-    object piProperties: TMenuItem
-      Caption = '&Properties'
-      OnClick = piPropertiesClick
+    object piDelete: TMenuItem
+      Caption = 'Delete'
+      ShortCut = 46
+      OnClick = piDeleteClick
+    end
+  end
+  object invPopup: TPopupMenu
+    Left = 68
+    Top = 656
+    object piAdd: TMenuItem
+      Caption = 'Add selected item'
+      OnClick = btnAddClick
+    end
+    object piChange: TMenuItem
+      Caption = 'Change Item Count'
+      Enabled = False
+      OnClick = btnChangeClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object piRemove: TMenuItem
+      Caption = 'Remove Item'
+      Enabled = False
+      OnClick = btnRemoveClick
     end
   end
   object ImageList1: TImageList
-    Left = 1227
-    Top = 818
+    Left = 41
+    Top = 656
     Bitmap = {
       494C010107000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030

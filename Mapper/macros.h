@@ -40,7 +40,7 @@
 #define misc_ID			 0x05
 #define inven_ID 		 0x06
 #define intrface_ID		 0x07
-
+//
 #define EG_blockID               0x07
 #define SAI_blockID              0x08
 #define wall_blockID             0x09
@@ -48,6 +48,23 @@
 #define light_blockID            0x0b
 #define scroll_blockID           0x0c
 #define obj_self_blockID         0x0d
+#define wall_see_blockID         0x0e
+#define hex_ID                   0x0f
+#define obj_see_blockID          0x10
+#define obj_thru_blockID         0x11
+#define obj_hexID                0x12
+#define cursor_hexID             0x13
+
+//FRM ID
+#define EG_blockPID              0x31
+#define WALL_blockPID_1          0x26d
+#define WALL_blockPID_2          0x26e
+#define OBJ_blockPID_1           0x43
+#define OBJ_blockPID_2           0x80
+#define SAI_blockPID             0x158
+#define LIGHT_blockPID           0x8d
+#define SCROLL_blockPID_1        0x05
+#define SCROLL_blockPID_2        0x0c
 
 #define floor_ID		 0x04
 #define roof_ID			 0x06
@@ -111,5 +128,13 @@
 
 #define ROTATE_CW        0x00
 #define ROTATE_CCW       0x01
+
+// obj properties
+#define Xoffset          0x02
+#define Yoffset          0x03
+#define CurrentFrame     0x06
+#define PacketAI         0x1A
+#define TeamID           0x1B
+#define CurrentHP        0x1D
 
 #endif

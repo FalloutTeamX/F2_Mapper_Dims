@@ -12,6 +12,7 @@
 #include <registry.hpp>
 #include <shlobj.h>
 #include <ddraw.h>
+//#include <Sysutils.hpp>
 //---------------------------------------------------------------------------
 CUtilites::CUtilites(void)
 {
@@ -22,6 +23,7 @@ CUtilites::CUtilites(void)
    char TempBuf[256];
    GetCurrentDirectory(256, TempBuf);
    MapperDir = (String)TempBuf;
+   AllowPlaced = false;
 
    IDname[0] = "items";
    IDname[1] = "critters";
@@ -85,6 +87,8 @@ void CUtilites::InitDirectories(void)
    if (DataDir.IsEmpty())
       DataDir = GameDir + "\\data";
    StringConvert = GetRegInfoBool("\\SOFTWARE\\Dims\\mapper", "ConvertStrings");
+
+   DeleteFile(MapperDir + "\\Undo\\undo.dat");
 }
 //---------------------------------------------------------------------------
 void CUtilites::MapperConfiguration(void)
@@ -395,7 +399,7 @@ void CUtilites::GetCursorHex(int X, int Y, int WorldX, int WorldY,
                                                          int *HexX, int *HexY)
 {
   int x0 = 4800; //int x0 = 4816;
-  int y0 = 0; //int y0 = 11;
+  int y0 = 6; //int y0 = 11;
   X += WorldX;
   Y += WorldY;
   long nx;
@@ -541,17 +545,16 @@ void CUtilites::RetranslateString(char *ptr)
 //------------------------------------------------------------------------------
 int CUtilites::GetBlockType(BYTE nProObjType, WORD nProID)
 {
-   if (nProObjType == scenery_ID && nProID == 0x31) return EG_blockID;
-   if (nProObjType == scenery_ID && nProID == 0x0158) return SAI_blockID;
-   if (nProObjType == wall_ID && (nProID == 0x026e || nProID == 0x026d)) return wall_blockID;
-   if (nProObjType == scenery_ID && (nProID == 0x43 || nProID == 0x80)) return obj_blockID;
-   if (nProObjType == scenery_ID && nProID == 0x8d) return light_blockID;
-   if (nProObjType == misc_ID && nProID == 0x05) return scroll_blockID;
-   if (nProObjType == misc_ID && nProID == 0x0c) return scroll_blockID;
+   if (nProObjType == scenery_ID && nProID == EG_blockPID)   return EG_blockID;
+   if (nProObjType == scenery_ID && nProID == SAI_blockPID) return SAI_blockID;
+   if (nProObjType == wall_ID && (nProID == WALL_blockPID_1 || nProID == WALL_blockPID_2)) return wall_blockID;
+   if (nProObjType == scenery_ID && (nProID == OBJ_blockPID_1 || nProID == OBJ_blockPID_2))  return obj_blockID;
+   if (nProObjType == scenery_ID && nProID == LIGHT_blockPID)   return light_blockID;
+   if (nProObjType == misc_ID && (nProID == SCROLL_blockPID_1 || nProID == SCROLL_blockPID_2)) return scroll_blockID;
    return 0;
 }
 //------------------------------------------------------------------------------
-void CUtilites::GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID)
+void CUtilites::GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID, bool ThruFlags)
 {
    switch (nBlockType)
    {
@@ -565,11 +568,11 @@ void CUtilites::GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID)
          break;
       case wall_blockID:
          *nObjType = intrface_ID;
-         *nFrmID = wall_blockID;
+         *nFrmID = (ThruFlags) ? wall_see_blockID : wall_blockID;
          break;
       case obj_blockID:
          *nObjType = intrface_ID;
-         *nFrmID = obj_blockID;
+         *nFrmID = (ThruFlags) ? obj_see_blockID : obj_blockID;
          break;
       case light_blockID:
          *nObjType = intrface_ID;
@@ -581,7 +584,11 @@ void CUtilites::GetBlockFrm(int nBlockType, BYTE *nObjType, WORD *nFrmID)
          break;
       case obj_self_blockID:
          *nObjType = intrface_ID;
-         *nFrmID = obj_self_blockID;
+         *nFrmID = *nFrmID = (ThruFlags) ? obj_thru_blockID : obj_self_blockID;
+         break;
+      case obj_hexID:
+         *nObjType = intrface_ID;
+         *nFrmID = obj_hexID;
          break;
    }
 }
@@ -1035,6 +1042,7 @@ CUtilites::~CUtilites()
       delete pCritterDAT;
    if (pSuffix != NULL)
       delete pSuffix;
+   DeleteFile(MapperDir + "\\Undo\\undo.dat");
 }
 //---------------------------------------------------------------------------
 

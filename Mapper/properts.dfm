@@ -1,13 +1,13 @@
 object frmProperties: TfrmProperties
-  Left = 363
-  Top = 185
-  Width = 487
-  Height = 557
+  Left = 443
+  Top = 156
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSizeToolWin
+  BorderStyle = bsToolWindow
   Caption = 'Properties'
+  ClientHeight = 522
+  ClientWidth = 479
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object frmProperties: TfrmProperties
     Left = 264
     Top = 0
     Width = 215
-    Height = 482
+    Height = 481
     Align = alRight
     Color = 15724527
     Columns = <
@@ -51,7 +51,7 @@ object frmProperties: TfrmProperties
   end
   object sb: TStatusBar
     Left = 0
-    Top = 504
+    Top = 503
     Width = 479
     Height = 19
     Panels = <
@@ -62,7 +62,7 @@ object frmProperties: TfrmProperties
   end
   object pn: TPanel
     Left = 0
-    Top = 482
+    Top = 481
     Width = 479
     Height = 22
     Align = alBottom
@@ -107,12 +107,22 @@ object frmProperties: TfrmProperties
       TabOrder = 0
       OnKeyDown = edKeyDown
     end
+    object cbHex: TCheckBox
+      Left = 143
+      Top = 2
+      Width = 117
+      Height = 17
+      Alignment = taLeftJustify
+      Caption = 'Hex value properties'
+      TabOrder = 1
+      OnClick = cbHexClick
+    end
   end
   object scrbox: TScrollBox
     Left = 0
     Top = 0
     Width = 264
-    Height = 482
+    Height = 481
     Align = alClient
     Color = 13160660
     ParentColor = False
@@ -140,16 +150,9 @@ object frmProperties: TfrmProperties
     object lbl1: TLabel
       Left = 2
       Top = 84
-      Width = 72
+      Width = 59
       Height = 13
-      Caption = 'Script filename:'
-    end
-    object Label1: TLabel
-      Left = 2
-      Top = 108
-      Width = 84
-      Height = 13
-      Caption = 'Script description:'
+      Caption = 'Script name:'
     end
     object Bevel2: TBevel
       Left = 8
@@ -159,9 +162,9 @@ object frmProperties: TfrmProperties
       Shape = bsTopLine
     end
     object cbScript: TComboBox
-      Left = 88
+      Left = 64
       Top = 83
-      Width = 169
+      Width = 193
       Height = 21
       Style = csDropDownList
       Color = 14870505
@@ -354,7 +357,7 @@ object frmProperties: TfrmProperties
     end
     object pages: TPageControl
       Left = 0
-      Top = 428
+      Top = 427
       Width = 260
       Height = 50
       ActivePage = TabSheet1
@@ -624,12 +627,15 @@ object frmProperties: TfrmProperties
       OnClick = FlagClick
     end
     object lblScriptDesc: TMemo
-      Left = 88
+      Left = 4
       Top = 108
-      Width = 169
+      Width = 253
       Height = 47
+      Hint = 'Script description.'
       Color = 14870505
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
       TabOrder = 34
     end
     object lblMSG2: TMemo
@@ -637,6 +643,7 @@ object frmProperties: TfrmProperties
       Top = 18
       Width = 257
       Height = 59
+      Hint = 'Object description.'
       Color = 14806749
       ReadOnly = True
       TabOrder = 35

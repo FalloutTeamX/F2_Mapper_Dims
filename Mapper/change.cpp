@@ -17,11 +17,13 @@ __fastcall TfmChange::TfmChange(TComponent* Owner)
 //---------------------------------------------------------------------------
 DWORD TfmChange::ChangeValue(DWORD nValueToChange)
 {
-   nOldValue = nCurrentValue;
+   nOldValue = nValueToChange;   //nCurrentValue
+   edValue->Text = nValueToChange;
    nCurrentValue = nValueToChange;
    UpDown1->Position = nCurrentValue;
+
    int result = this->ShowModal();
-   return result == mrOk ? nCurrentValue : nValueToChange;
+   return result == mrOk ? nCurrentValue : 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TfmChange::FormCloseQuery(TObject *Sender, bool &CanClose)
@@ -34,6 +36,7 @@ void __fastcall TfmChange::FormCloseQuery(TObject *Sender, bool &CanClose)
    catch(Exception &exception)
    {
       nCurrentValue = nOldValue;
+      edValue->Text = nOldValue;
       UpDown1->Position = nCurrentValue;
       CanClose = false;
    }

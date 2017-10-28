@@ -48,6 +48,7 @@ public:
    void SetMapScriptID(DWORD nMapScriptID);
    DWORD GetFlags(void);
    void SetFlags(DWORD dwFlags);
+   DWORD GetFrame(void);
    DWORD ChildCount(void);
    void SetChildCount(DWORD nNewCount);
    bool ObjIsChild(void);
@@ -68,9 +69,9 @@ public:
    void SaveToFile(HANDLE h_map);
    void DeleteSelected();
    void DeleteObject(BYTE *pDelObj);
-   void AppendObject(int X, int Y, int nLevel, BYTE nType, WORD nID);
+   void AppendObject(int X, int Y, int nLevel, BYTE nType, WORD nID, DWORD nDir);
    void AppendChildObject(BYTE *pToObj, int nLevel, BYTE nType, WORD nID);
-   BYTE* CreateObject(int X, int Y, int nLevel, BYTE nType, WORD nID);
+   BYTE* CreateObject(int X, int Y, int nLevel, BYTE nType, WORD nID, DWORD nDir = 0);
    void ReleaseObject(BYTE *pObjForDelete);
    void AddObject(BYTE *pNewObj);
    void AddChildObject(BYTE *pToObj, BYTE *pNewObj);

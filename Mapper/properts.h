@@ -84,9 +84,9 @@ __published:	// IDE-managed Components
         TTabSheet *TabSheet17;
         TMemo *lblScriptDesc;
         TLabel *lbl1;
-        TLabel *Label1;
         TBevel *Bevel2;
         TMemo *lblMSG2;
+        TCheckBox *cbHex;
         void __fastcall lvSelectItem(TObject *Sender, TListItem *Item,
           bool Selected);
         void __fastcall edKeyDown(TObject *Sender, WORD &Key,
@@ -95,6 +95,7 @@ __published:	// IDE-managed Components
         void __fastcall sb1Click(TObject *Sender);
         void __fastcall cbScriptChange(TObject *Sender);
         void __fastcall FlagClick(TObject *Sender);
+        void __fastcall cbHexClick(TObject *Sender);
 private:	// User declarations
         CObjSet *pObjSet;
         CScriptBuf *pScriptBuf;

@@ -20,9 +20,6 @@ __published:	// IDE-managed Components
         TButton *btnOK;
         TButton *btnCancel;
         TGroupBox *gb2;
-        TRadioButton *rb1;
-        TRadioButton *rb2;
-        TRadioButton *rb3;
         TListView *lvDAT;
         TLabel *lbl1;
         TEdit *edDataDir;
@@ -32,6 +29,7 @@ __published:	// IDE-managed Components
         // ANSI <-> OEM Conversions. winterheart, 04.04.2011
         TGroupBox *gb3;
         TCheckBox *chb;
+        TCheckBox *cbAllow;
         void __fastcall btnBrowseClick(TObject *Sender);
         void __fastcall btnBrowse2Click(TObject *Sender);
         void __fastcall btnOKClick(TObject *Sender);

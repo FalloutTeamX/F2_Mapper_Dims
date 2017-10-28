@@ -40,6 +40,8 @@ public:
    short GetSprY(WORD nDir, WORD nFrame);
    signed short GetDoffX(WORD nDir);
    signed short GetDoffY(WORD nDir);
+   signed short GetFoffX(WORD nDir, WORD nFrame);
+   signed short GetFoffY(WORD nDir, WORD nFrame);
 
    CFrame(void);
    virtual ~CFrame();

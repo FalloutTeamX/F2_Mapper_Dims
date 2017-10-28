@@ -43,18 +43,21 @@ void CProSet::LoadLocalPROs(void)
    BYTE nObjType;
    WORD nProID;
    nLevel = 0;
+
    do
    {
       pObj = pObjSet->GetFirstObj(&nObjNum, nLevel);
       while (pObj)
       {
-//         if (nObjNum == 600) // bug in junkcsno.map [fallout1]
-//            nObjNum = nObjNum;
-// TODO: fix junkcsno.map
-         pLog->LogX("DEBUG: Object Num:" + String(nObjNum) + " Child Count:" + String(nChildCount));
+         pLog->LogX("CHECK: Object Num:" + String(nObjNum) + " Child Count:" + String(nChildCount));
          pObjSet->GetObjType(&nObjType, &nProID);
-         LoadPRO(nObjType, nProID, true);
-         pObj = pObjSet->GetNextObj(&nObjNum, &nChildCount, nLevel);
+         if (nProID > 0)
+            LoadPRO(nObjType, nProID, true);
+         else {
+            pLog->LogX("[Error] Incorrect object ID for loaded PRO file of object num:"
+                        + String(nObjNum) + ", ObjID:" + String(nProID) + "\n");
+         }
+         pObj = pObjSet->GetNextObj(&nObjNum, &nChildCount, nLevel);  // DONE: fix junkcsno.map
          frmMDI->iPos++;
          Application->ProcessMessages();
       }
@@ -73,7 +76,7 @@ void CProSet::LoadPRO(BYTE nObjType, WORD nObjID, bool bLocal)
    DWORD filesize, filesize2;
 
    pLog->LogX("Need PRO file for ObjType = " + String(nObjType) +
-              ", ObjID = \"" + String(nObjID));
+              ", ObjID = \"" + String(nObjID) + "\"");
    if (nObjID > frmMDI->pLstFiles->pPROlst[nObjType]->Count) return;
    String profile = "proto\\" + IDname[nObjType]+ "\\" +
                      frmMDI->pLstFiles->pPROlst[nObjType]->Strings[nObjID - 1];
@@ -87,7 +90,7 @@ void CProSet::LoadPRO(BYTE nObjType, WORD nObjID, bool bLocal)
    pPRO[nObjType][nObjID].LoadData(filesize);     //nObjID + 1
    pUtil->ReadFileX(h_pro, l_pPRO->data, filesize, &i);
    pLog->LogX("Loaded PRO file \"" + profile + "\" load " + String(i) + " of " +
-              String(filesize) + " bytes.");
+              String(filesize) + " bytes.\n");
    pUtil->CloseHandleX(h_pro);
 }
 //---------------------------------------------------------------------------

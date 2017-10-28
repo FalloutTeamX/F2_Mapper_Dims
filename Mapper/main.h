@@ -24,12 +24,15 @@
 #include <Buttons.hpp>
 #include <ImgList.hpp>
 #include <ddraw.h>
+#include "info.h"
 // Функции max и min. winterheart, 04.04.2011
 #include <algorithm>
 using namespace std;
 //---------------------------------------------------------------------------
 class TfrmEnv : public TForm
 {
+  typedef signed char SBYTE;
+
 __published:	// IDE-managed Components
         TPanel *imgMap;
         TShape *shp;
@@ -44,7 +47,6 @@ __published:	// IDE-managed Components
         TShape *Shape5;
         TScrollBar *sb;
         TPopupMenu *popupMap;
-        TMenuItem *Mapperv09byDims1;
         TMenuItem *N1;
         TSpeedButton *btnWorld;
         TShape *Shape6;
@@ -63,11 +65,27 @@ __published:	// IDE-managed Components
         TSpeedButton *btnAdd;
         TSpeedButton *btnRemove;
         TSpeedButton *btnChange;
-        TShape *Shape10;
         TLabel *Label1;
-        TShape *Shape11;
-        TLabel *Label2;
+   TLabel *lblDir;
         TShape *Shape9;
+        TPanel *ObjectPanel;
+        TPanel *InvenPanel;
+        TPanel *MinimapPanel;
+        TPopupMenu *invPopup;
+        TMenuItem *piChange;
+        TMenuItem *N3;
+        TMenuItem *piRemove;
+   TMenuItem *piAdd;
+   TMenuItem *piChangeMode;
+   TMenuItem *piPickDrawObject;
+   TMenuItem *N4;
+   TSpeedButton *btnRotateLeft;
+   TSpeedButton *btnRotateRight;
+   TShape *Shape10;
+   TComboBox *KeyControl;
+   TSpeedButton *btnItemInfo;
+   TMenuItem *piTilesToNavigator;
+   TMenuItem *piUseObject;
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall imgMapMouseDown(TObject *Sender,
@@ -101,6 +119,22 @@ __published:	// IDE-managed Components
         void __fastcall btnAddClick(TObject *Sender);
         void __fastcall btnRemoveClick(TObject *Sender);
         void __fastcall sbINVChange(TObject *Sender);
+        void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+        void __fastcall piChangeModeClick(TObject *Sender);
+   void __fastcall piPickDrawObjectClick(TObject *Sender);
+   void __fastcall lblMMClick(TObject *Sender);
+   void __fastcall imgObjDblClick(TObject *Sender);
+   void __fastcall btnRotateLeftClick(TObject *Sender);
+   void __fastcall btnRotateRightClick(TObject *Sender);
+   void __fastcall KeyControlKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+   void __fastcall KeyControlKeyUp(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+   void __fastcall piTilesToNavigatorClick(TObject *Sender);
+   void __fastcall btnItemInfoClick(TObject *Sender);
+   void __fastcall piUseObjectClick(TObject *Sender);
+
 private:	// User declarations
         CUtilites *pUtil;
         CLog *pLog;
@@ -109,8 +143,11 @@ private:	// User declarations
         CListFiles *pLstFiles;
         CMsg *pMsg;
         CPal *pPal;
+        TList *pRndObj;
         bool mouseBLeft, mouseBLeft2;
         bool mouseBRight, mouseBRight2;
+        bool mouseBMiddle;
+        bool shiftDown, ctrlDown, altDown;
         int downX, downY, upX, upY; //for Mouse at Map
         int downHexX, downHexY;
         int downTileX, downTileY;
@@ -127,20 +164,34 @@ private:	// User declarations
         Classes::TWndMethod OldInvWndProc;
         struct OBJNAVIGATOR
         {
-           BYTE nObjType;
-           DWORD nSelID;
-           DWORD nNavID[8];
+           BYTE nObjType;     // Текущий тип объекта
+           DWORD nSelID;      // Текущий выбранный объект для рисования.
+           DWORD nNavID[50];  //[8] Резервируем дополнительное место для слотов
            BYTE nShowMode;
            int nCount;
            int nMaxID;
+           int cScrollPos[7];  // Текущее положение ползунка скрола для всех категории навигатора
+           DWORD cSelectedID;  // Выбранный объект в категории (используется для запоминания выбора)
         } Navigator;
         struct OBJINVENTORY
         {
            BYTE *pObj;
-           BYTE *pChildObj[3];
+           BYTE *pChildObj[25];  //[3] Резервируем дополнительное место для слотов
            int nItemNum;
            int nInvStartItem;
+           int iLevel;
         } Inventory;
+
+        bool drawBlocker;
+        bool inventoryDraw;
+
+        struct OBJSELECT
+        {
+           SBYTE nObjType;    // Текущий тип объекта
+           DWORD nSelID;      // Текущий ID объекта
+           BYTE  *pSelObj;    // Текущий выбранный объект
+        }  CurMapObjSelect;
+
         void __fastcall NewMapWndProc(TMessage &Msg);
         void __fastcall NewNavWndProc(TMessage &Msg);
         void __fastcall NewInvWndProc(TMessage &Msg);
@@ -149,24 +200,40 @@ private:	// User declarations
         void RerawObjects(void);
         void RedrawRoof(void);
         void RedrawObjects(void);
-        void RedrawBlockers(void);
+        void PreRedrawBlockers(void);
+        void RedrawBlockers(int nBlockType, BYTE nObjType, WORD nFrmID);
         void RedrawHex(void);
         void RedrawLocator(void);
+        void RedrawPickObject(bool force, int nID);
         void SelectObjXY(int X, int Y);
         bool SelectObjRegion(int X, int Y, int X2, int Y2);
         void SelectionChanged(void);
         bool SelectTileRegion(int TileMode, int X, int Y, int X2, int Y2);
         void LogSelected(void);
+
+        void ShowBlockers();
+        WORD GetFrmID(BYTE nObjType, int nID);
+        void LoadObjID(int pID, BYTE typeID);
+        bool HexIsBlock(int objHexX, int objHexY);
+        void MouseMiddleUp();
+        String GetMapItemsInfo();
+        DWORD CheckDirection(int direction, DWORD nDir, WORD nMaxDir);
+        void SetGlobalObjectDir(int dir = 0);
+        int GetIndexSubType(BYTE nObjType, int nID);
+
 public:		// User declarations
         TfrmProperties *frmProp;
-        int SelectMode;
+        int SelectMode, SelectModeMBM;
         CMap *pMap;
         CTileSet *pTileSet;
         CObjSet *pObjSet;
         int WorldX, OldWorldX;
         int WorldY, OldWorldY;
         int iLevel;
-        bool bShowObj[14];
+        bool bShowObj[16];
+        bool blockOnTop;
+        int randomObject;
+
         LPDIRECTDRAWSURFACE7 dds, dds2Map, dds2Nav, dds2Inv;
         LPDIRECTDRAWCLIPPER ddc, ddcMap, ddcNav, ddcInv;
         TStatusPanel *panelHEX;
@@ -181,22 +248,29 @@ public:		// User declarations
         void ClearObjSelection(bool NeedRedrawMap);
         void MoveSelectedObjects(int offsetHexX, int offsetHexY);
         void RotateSelectedObjects(int direction);
-        void SetButtonSave(bool State);
+        void SetButtonSave(bool State, bool uState = false);
         void RedrawMap(bool StaticRedraw);
         void PrepareNavigator(BYTE nObjType);
-        void RedrawNavigator(void);
+        void RedrawNavigator(int highlight = -1);
         void ResetInventoryInfo(void);
         void RedrawInventory(void);
 
-       	void TransBltFrm(CFrame* frm, TControl*, short nDir, short nFrame,
+        int ObjectRandomDraw(int index);
+        void RandomObjState(bool enable);
+        void DrawBlock(int type);
+        void UndoDelete(bool undo);
+        void MapCaptionInfo();
+
+        void TransBltFrm(CFrame* frm, TControl*, short nDir, short nFrame,
                                        int x, int y, LPDIRECTDRAWSURFACE7 dds2);
-	void TransBltMask(CFrame* frm, TControl*, short nDir, short nFrame,
+        void TransBltMask(CFrame* frm, TControl*, short nDir, short nFrame,
                 int x, int y, LPDIRECTDRAWSURFACE7 dds2, int width, int height);
         void TransBltTileRegion(LPDIRECTDRAWSURFACE7 dds2,
-                                int TileX1, int TileY1, int TileX2, int TileY2);
-	void RepaintDDrawWindow(TWinControl *win, LPDIRECTDRAWSURFACE7 dds,
+                                int TileX1, int TileY1, int TileX2, int TileY2,
+                                TColor clr, int wPen = 1);
+        void RepaintDDrawWindow(TWinControl *win, LPDIRECTDRAWSURFACE7 dds,
                           LPDIRECTDRAWSURFACE7 dds2, LPDIRECTDRAWCLIPPER ddc);
-	void AttachDDraw(TControl *win, LPDIRECTDRAWSURFACE7 *dds, int primary);
+        void AttachDDraw(TControl *win, LPDIRECTDRAWSURFACE7 *dds, int primary);
 
         __fastcall TfrmEnv(TComponent* Owner);
 };

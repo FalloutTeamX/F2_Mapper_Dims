@@ -165,8 +165,11 @@ BYTE* CObjSet::GetNextObj(DWORD *nObjNum, DWORD *nChildCount, int nLevel)
          nObjLen = IDlen[nObjType];
    }
 
-   if ((nObjType == 1) || (nObjType == 0 && nSubType == 1) && !*nChildCount)
+   if ((nObjType == 1) || (nObjType == 0 && nSubType == 1) && !*nChildCount) {
       *nChildCount = ChildCount();
+      if (frmEnv->pMap->dwVer == VER_FALLOUT1 && *nObjNum == 600 && nObjID == 146)
+         *nChildCount += 1; // fix bug in junkcsno.map [fallout1]
+   }
    pObj += (nObjLen + (*nChildCount ? 4 : 0));
 
    switch (nLevel)
@@ -423,6 +426,11 @@ DWORD CObjSet::GetFlags(void)
 void CObjSet::SetFlags(DWORD dwFlags)
 {
    *(DWORD *)(pObj + 0x24) = pUtil->GetDW(&dwFlags);
+}
+//---------------------------------------------------------------------------
+DWORD CObjSet::GetFrame(void)
+{
+   return pUtil->GetDW((DWORD *)(pObj + 0x18));
 }
 //---------------------------------------------------------------------------
 DWORD CObjSet::ChildCount(void)
@@ -713,9 +721,9 @@ void CObjSet::DeleteObject(BYTE *pDelObj)
    }
 }
 //---------------------------------------------------------------------------
-void CObjSet::AppendObject(int X, int Y, int nLevel, BYTE nType, WORD nID)
+void CObjSet::AppendObject(int X, int Y, int nLevel, BYTE nType, WORD nID, DWORD nDir)
 {
-   BYTE *l_pObj = CreateObject(X, Y, nLevel, nType, nID);
+   BYTE *l_pObj = CreateObject(X, Y, nLevel, nType, nID, nDir);
    AddObject(l_pObj);
    ReleaseObject(l_pObj);
 }
@@ -727,13 +735,14 @@ void CObjSet::AppendChildObject(BYTE *pToObj, int nLevel, BYTE nType, WORD nID)
    ReleaseObject(l_pObj);
 }
 //---------------------------------------------------------------------------
-BYTE* CObjSet::CreateObject(int X, int Y, int nLevel, BYTE nType, WORD nID)
+BYTE* CObjSet::CreateObject(int X, int Y, int nLevel, BYTE nType, WORD nID, DWORD nDir)
 {
    int nObjLen = GetObjLenByID(nType, nID);
    if ((pNewObjBuf = (BYTE *)malloc(nObjLen)) == NULL) return NULL;
    memset(pNewObjBuf, 0, nObjLen);
    SetObj(pNewObjBuf);
    SetHexXY(X, Y);
+   SetDirection(nDir);
    SetObjLevel(nLevel);
    SetObjType(nType, nID);
    WORD nFrmID = pProSet->pPRO[nType][nID].GetFrmID();
@@ -742,6 +751,13 @@ BYTE* CObjSet::CreateObject(int X, int Y, int nLevel, BYTE nType, WORD nID)
    SetScriptPID(0xFFFFFFFF);
    SetMapScriptID(0xFFFFFFFF);
    SetFlags(pProSet->pPRO[nType][nID].GetFlags());
+   if (nType == critter_ID) {
+      SetObjInfo(PacketAI, pProSet->pPRO[nType][nID].GetAIPacket());
+      SetObjInfo(TeamID, pProSet->pPRO[nType][nID].GetTeamID());
+      SetObjInfo(0x1C, -1);
+      SetObjInfo(CurrentHP, pProSet->pPRO[nType][nID].GetHitPoint());
+   }
+
    return pNewObjBuf;
 }
 //---------------------------------------------------------------------------

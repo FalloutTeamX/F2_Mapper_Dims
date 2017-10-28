@@ -8,15 +8,16 @@
       bin\frmset.obj bin\utilites.obj bin\pbar.obj bin\mdi.obj bin\frame.obj 
       bin\datfile.obj bin\objset.obj bin\proset.obj bin\pro.obj bin\pal.obj 
       bin\properts.obj bin\config.obj bin\script.obj bin\unlzss.obj 
-      bin\cfile.obj bin\log.obj bin\msg.obj bin\change.obj bin\about.obj"/>
+      bin\cfile.obj bin\log.obj bin\msg.obj bin\change.obj bin\about.obj 
+      bin\rndobj.obj bin\info.obj"/>
     <RESFILES value="mapper2.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) main.dfm pbar.dfm mdi.dfm properts.dfm config.dfm change.dfm 
-      about.dfm"/>
+      about.dfm info.dfm"/>
     <LIBFILES value="lib\zlib10.lib &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\msimg32.lib&quot; 
-      &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\ddraw.lib&quot; &quot;C:\Program Files\Borland\CBuilder5\Lib\PSDK\dxguid.lib&quot;"/>
+      lib\ddraw.lib lib\dxguid.lib"/>
     <LIBRARIES value="vclx.lib vcl.lib rtl.lib"/>
     <SPARELIBS value="rtl.lib vcl.lib vclx.lib"/>
     <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi adortl.bpi 
@@ -41,8 +42,8 @@
   </MACROS>
   <OPTIONS>
     <IDLCFLAGS value="-Icfile -Iunlzss -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
-    <CFLAG1 value="-O2 -H=&quot;C:\Program Files\Borland\CBuilder6\Lib\vcl60.csm&quot; -Hc -Vx -Ve -X- 
-      -a8 -6 -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG1 value="-O2 -H=&quot;C:\Program Files\Borland\CBuilder6\Lib\vcl60.csm&quot; -Hc -w- -Vx -Ve 
+      -X- -a8 -6 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-N2bin -N0bin -$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zn"/>
@@ -57,7 +58,7 @@
   </LINKER>
   <FILELIST>
       <FILE FILENAME="mapper2.cpp" FORMNAME="" UNITNAME="mapper2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="mapper2.res" FORMNAME="" UNITNAME="mapper2" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="mapper2.res" FORMNAME="" UNITNAME="mapper2.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main.cpp" FORMNAME="frmEnv" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="map.cpp" FORMNAME="" UNITNAME="map" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="tileset.cpp" FORMNAME="" UNITNAME="tileset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -81,10 +82,13 @@
       <FILE FILENAME="cfile\cfile.cpp" FORMNAME="" UNITNAME="cfile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="log.cpp" FORMNAME="" UNITNAME="log" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="msg.cpp" FORMNAME="" UNITNAME="msg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="C:\Program Files\Borland\CBuilder5\Lib\PSDK\ddraw.lib" FORMNAME="" UNITNAME="ddraw" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="C:\Program Files\Borland\CBuilder5\Lib\PSDK\dxguid.lib" FORMNAME="" UNITNAME="dxguid" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="change.cpp" FORMNAME="fmChange" UNITNAME="change" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="about.cpp" FORMNAME="AboutBox" UNITNAME="about" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="macros.h" FORMNAME="" UNITNAME="macros.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="lib\ddraw.lib" FORMNAME="" UNITNAME="ddraw.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="lib\dxguid.lib" FORMNAME="" UNITNAME="dxguid.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="rndobj.cpp" FORMNAME="" UNITNAME="rndobj" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="info.cpp" FORMNAME="frmInfo" UNITNAME="info" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -95,8 +99,8 @@ IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=0
 MinorVer=99
-Release=2
-Build=2
+Release=3
+Build=0
 Debug=0
 PreRelease=0
 Special=0
@@ -107,8 +111,8 @@ CodePage=1251
 
 [Version Info Keys]
 CompanyName=
-FileDescription=
-FileVersion=0.99.2.2
+FileDescription=Mapper update by Fakels
+FileVersion=0.99.3.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -117,19 +121,13 @@ ProductName=mapper
 ProductVersion=1.0.0.0
 Comments=
 
-[Excluded Packages]
-c:\program files\borland\cbuilder6\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
-
 [HistoryLists\hlIncludePath]
-Count=2
+Count=1
 Item0=cfile;unlzss;$(BCB)\include;$(BCB)\include\vcl
-Item1=cfile;unlzss;C:\Program Files\Borland\CBuilder6\Include;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=3
+Count=1
 Item0=lib;cfile;unlzss;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
-Item1=cfile;unlzss;C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
-Item2=cfile;unlzss;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Lib\Psdk
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

@@ -1,11 +1,11 @@
 object frmConfig: TfrmConfig
-  Left = 354
-  Top = 368
+  Left = 181
+  Top = 416
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Mapper configuration'
   ClientHeight = 371
-  ClientWidth = 392
+  ClientWidth = 402
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -51,7 +51,7 @@ object frmConfig: TfrmConfig
     Transparent = True
   end
   object gb1: TGroupBox
-    Left = 0
+    Left = 6
     Top = 0
     Width = 390
     Height = 190
@@ -109,7 +109,7 @@ object frmConfig: TfrmConfig
     end
   end
   object btnOK: TButton
-    Left = 237
+    Left = 242
     Top = 343
     Width = 75
     Height = 25
@@ -120,7 +120,7 @@ object frmConfig: TfrmConfig
     OnClick = btnOKClick
   end
   object btnCancel: TButton
-    Left = 316
+    Left = 321
     Top = 343
     Width = 75
     Height = 25
@@ -130,10 +130,10 @@ object frmConfig: TfrmConfig
     TabOrder = 1
   end
   object gb2: TGroupBox
-    Left = 0
+    Left = 6
     Top = 190
     Width = 390
-    Height = 110
+    Height = 51
     Caption = ' Local data location '
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -142,42 +142,13 @@ object frmConfig: TfrmConfig
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    object rb1: TRadioButton
-      Left = 8
-      Top = 47
-      Width = 377
-      Height = 17
-      Caption = 'Use only DAT resources'
-      Enabled = False
-      TabOrder = 0
-    end
-    object rb2: TRadioButton
-      Left = 8
-      Top = 63
-      Width = 377
-      Height = 17
-      Caption = 'Use only local resources'
-      Enabled = False
-      TabOrder = 1
-    end
-    object rb3: TRadioButton
-      Left = 8
-      Top = 79
-      Width = 377
-      Height = 17
-      Caption = 'Both using resources (Recommended)'
-      Checked = True
-      Enabled = False
-      TabOrder = 2
-      TabStop = True
-    end
     object edDataDir: TEdit
       Left = 8
       Top = 18
       Width = 350
       Height = 21
       ReadOnly = True
-      TabOrder = 3
+      TabOrder = 0
     end
     object btnBrowse2: TButton
       Left = 360
@@ -188,27 +159,40 @@ object frmConfig: TfrmConfig
       Caption = '...'
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 4
+      TabOrder = 1
       OnClick = btnBrowse2Click
     end
   end
   object gb3: TGroupBox
-    Left = 0
-    Top = 300
+    Left = 6
+    Top = 244
     Width = 390
-    Height = 37
-    Caption = 'Strings conversion'
+    Height = 93
+    Caption = 'Options'
     TabOrder = 4
     object chb: TCheckBox
-      Left = 8
-      Top = 16
+      Left = 7
+      Top = 37
       Width = 377
       Height = 17
       Hint = 'Set this checkbox if strings in MSG-files are OEM encoded.'
-      Caption = 'Convert strings from OEM to ANSI'
+      Caption = 'Strings conversion from OEM to ANSI'
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
+    end
+    object cbAllow: TCheckBox
+      Left = 7
+      Top = 15
+      Width = 377
+      Height = 21
+      Hint = 
+        'If the option is not set, then you can place the object by holdi' +
+        'ng down the Ctrl key.'
+      Caption = 'Allow placed objects on blocked hex by another objects'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
     end
   end
 end
