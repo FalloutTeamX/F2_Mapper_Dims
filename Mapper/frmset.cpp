@@ -237,22 +237,24 @@ void CFrmSet::FreeUpFRM(CFrame *l_pFRM)
 //---------------------------------------------------------------------------
 void CFrmSet::GetCritterFName(String* filename, DWORD frmPID, WORD *frmID)
 {
-   // Извлечение нового индекса из строки critters.lst
-   int CommaPos = filename->Pos(",");
-   String NewIndexAsStr = filename->SubString(filename->Pos(",") + 1,
+   int NewIndex = -1;
+   try {
+      // extract index B from line A,B,C in critters.lst:
+      //   A: [FRM name (6 chars)],
+      //   B: [index in CRITTERS.LST - used to reference Aimed Shot screen],
+      //   C: [Whether Run animations are included]
+      int CommaPos = filename->Pos(",");
+
+      String NewIndexAsStr = filename->SubString(CommaPos + 1,
                                              filename->Length() - CommaPos);
-   CommaPos = NewIndexAsStr.Pos(",");
+      CommaPos = NewIndexAsStr.Pos(",");
 
-   if (CommaPos)
-      NewIndexAsStr = NewIndexAsStr.SubString(1, CommaPos - 1);
-
-   int NewIndex;
-   try
-   {
-      NewIndex = NewIndexAsStr.ToInt();
-   }
-
-   catch(EConvertError&) {
+      if (CommaPos)
+      {
+         NewIndexAsStr = NewIndexAsStr.SubString(1, CommaPos - 1);
+         NewIndex = NewIndexAsStr.ToInt();
+      }
+   } catch(EConvertError&) {
       Application->MessageBox("Bad string in critters.lst\n"
                               "Object will be ignored",
                               "Mapper",
@@ -272,13 +274,16 @@ void CFrmSet::GetCritterFName(String* filename, DWORD frmPID, WORD *frmID)
        ID2 == 0x39 || ID2 == 0x3A ||
        ID2 == 0x21 || ID2 == 0x40)
    {
-       Index = NewIndex;
-         *filename = pUtil->GetFRMFileName(critter_ID,
+      Index = NewIndex;
+      *filename = pUtil->GetFRMFileName(critter_ID,
                                 pLstFiles->pFRMlst[critter_ID]->Strings[Index]);
 //       *filename = pLstFiles->pFRMlst[critter_ID]->Strings[Index];
    }
 
-   filename->SetLength(filename->Pos(",") - 1);
+   int CommaPos = filename->Pos(",");
+
+   if (CommaPos)
+        filename->SetLength(CommaPos - 1);
 
    // Получение суффиксов
    char Suffix1;
