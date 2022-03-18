@@ -26,11 +26,11 @@
 #include "properts.h"
 #include "rndobj.h"
 
-const crHandCursor = 1;
-const crHandTakeCursor = 2;
-const crCrossCursor = 3;
-const crMyPenCursor = 4;
-const crMoveCursor = 8;
+const int crHandCursor = 1;
+const int crHandTakeCursor = 2;
+const int crCrossCursor = 3;
+const int crMyPenCursor = 4;
+const int crMoveCursor = 8;
 //---------------------------------------------------------------------------
 class TfrmMDI : public TForm
 {

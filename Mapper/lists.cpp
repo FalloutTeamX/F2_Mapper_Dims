@@ -65,7 +65,7 @@ CListFiles::~CListFiles()
       if (pFRMlst[i]) delete pFRMlst[i];
    for (int i = 0; i < 6; i++)
       if (pPROlst[i]) delete pPROlst[i];
-   if (pScript) pScript;
+   if (pScript) delete pScript;
 }
 //---------------------------------------------------------------------------
 

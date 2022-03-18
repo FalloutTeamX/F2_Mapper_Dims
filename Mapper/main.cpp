@@ -163,6 +163,8 @@ __fastcall TfrmEnv::TfrmEnv(TComponent* Owner)
    pMap = new CMap(h_map); //passed
    frmMDI->frmPBar->NewTask(NULL, "Load tileset ...", 0, 0, &frmMDI->iPos);
    pTileSet = new CTileSet(h_map, pMap->TilesSizeX * pMap->TilesSizeY); //passed
+
+   frmMDI->frmPBar->NewTask(NULL, "Load objects ...", 0, 0, &frmMDI->iPos);
    pObjSet = new CObjSet(h_map); //passed
 
    MapCaptionInfo();

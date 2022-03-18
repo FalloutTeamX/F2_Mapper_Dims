@@ -7,7 +7,7 @@
 #include <FileCtrl.hpp>
 #include "macros.h"
 #include "error.h"
-#include "zlib\zlib.h"
+#include "zlib/ZLIB.h"
 #include "cfile/cfile.h"
 
 #include "datfile.h"
@@ -344,7 +344,7 @@ void TDatFile::ExtractFile(int Temp)
 	stream.opaque = Z_NULL;
 	stream.next_in = Z_NULL;
 	stream.avail_in = 0;
-	if (::inflateInit (&stream)!=Z_OK)
+	if (inflateInit (&stream)!=Z_OK)
         {
            ErrorType = ERR_UNKNOWN;
            lError = true;
@@ -370,7 +370,7 @@ void TDatFile::ExtractFile(int Temp)
            }
 
 	   // INFLATING BUFFER
-	   res = ::inflate (&stream, Z_PARTIAL_FLUSH); //Z_NO_FLUSH
+	   res = inflate (&stream, Z_PARTIAL_FLUSH); //Z_NO_FLUSH
 
            if (stream.avail_out == 0 || res == Z_STREAM_END)
            {
@@ -380,7 +380,7 @@ void TDatFile::ExtractFile(int Temp)
            if (stream.total_out == RealSize)
               res = Z_STREAM_END;
         }
-	::inflateEnd (&stream);
+	inflateEnd (&stream);
    }
    else //if not compressed
    {
@@ -557,7 +557,7 @@ bool TDatFile::ImportFile(HANDLE h_tmpdat, HANDLE h_tmptree,
    stream.opaque = Z_NULL;
    stream.next_in = Z_NULL;
    stream.avail_in = 0;
-   if (::deflateInit (&stream, Z_BEST_SPEED) != Z_OK)// Z_DEFAULT_COMPRESSION 
+   if (deflateInit (&stream, Z_BEST_SPEED) != Z_OK)// Z_DEFAULT_COMPRESSION 
    {
       ErrorType = ERR_UNKNOWN;
       lError = true;
@@ -584,7 +584,7 @@ bool TDatFile::ImportFile(HANDLE h_tmpdat, HANDLE h_tmptree,
       }
 
       // DEFLATING BUFFER
-      res = ::deflate (&stream, Z_PARTIAL_FLUSH); //Z_PARTIAL_FLUSH, Z_FINISH, Z_FULL_FLUSH, Z_NO_FLUSH
+      res = deflate (&stream, Z_PARTIAL_FLUSH); //Z_PARTIAL_FLUSH, Z_FINISH, Z_FULL_FLUSH, Z_NO_FLUSH
 
       if (stream.avail_out == 0 && stream.total_in < RealSize)//stream.avail_out == 0 || res == Z_STREAM_END
       {
@@ -592,9 +592,9 @@ bool TDatFile::ImportFile(HANDLE h_tmpdat, HANDLE h_tmptree,
 	   stream.next_out = gzipbuff + ZLIB_BUFF_SIZE;
       }
       if (stream.total_in >= RealSize) //
-         res = ::deflate (&stream, Z_FINISH); //Z_PARTIAL_FLUSH, Z_FINISH
+         res = deflate (&stream, Z_FINISH); //Z_PARTIAL_FLUSH, Z_FINISH
    }
-   ::deflateEnd (&stream);
+   deflateEnd (&stream);
 
    PackedSize = stream.total_out;
 
@@ -681,7 +681,7 @@ String TDatFile::GetDirOrFile(String Mask)
    int n;
    String LastName;
    LastName = FullName.SubString(Mask.Length() + 1, FileNameSize);
-   if (n = LastName.Pos("\\"))
+   if (n == LastName.Pos("\\"))
       return LastName.SubString(0, n);
    return LastName;
 }

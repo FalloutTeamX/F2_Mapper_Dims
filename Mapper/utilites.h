@@ -28,7 +28,7 @@ public:
    void MapperConfiguration(void);
    String GetFolder(String Caption);
    String GetRegInfoS(String RegKey, String KeyName);
-   bool CUtilites::GetRegInfoBool(String RegKey, String KeyName);
+   bool GetRegInfoBool(String RegKey, String KeyName);
    bool SetRegInfo(String RegKey, String KeyName, String Value);
    // overload for boolean data
    bool SetRegInfo(String RegKey, String KeyName, bool Value);

@@ -10,7 +10,7 @@ USEFORM("change.cpp", fmChange);
 USEFORM("about.cpp", AboutBox);
 USEFORM("info.cpp", frmInfo);
 //---------------------------------------------------------------------------
-WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
         try
         {

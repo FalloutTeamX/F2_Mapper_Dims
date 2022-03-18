@@ -27,6 +27,7 @@
 #include "info.h"
 // Функции max и min. winterheart, 04.04.2011
 #include <algorithm>
+// #include <System.ImageList.hpp> - upgrade to cppbuilder seattle
 using namespace std;
 //---------------------------------------------------------------------------
 class TfrmEnv : public TForm
