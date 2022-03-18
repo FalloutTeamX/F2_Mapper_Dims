@@ -8,6 +8,7 @@
 #define GZIP_MODE1 0x0178
 #define GZIP_MODE2 0xDA78
 
+#define TILE_EMPTY 1
 #define TILE_SIZE_X 80
 #define TILE_SIZE_Y 36
 #define TILE_LEFT_CORNER_X 0

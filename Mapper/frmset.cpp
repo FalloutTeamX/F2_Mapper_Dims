@@ -2,6 +2,7 @@
 // CFrmSet Class
 //////////////////////////////////////////////////////////////////////
 
+#include "macros.h"
 #include "frmset.h"
 #include "mdi.h"
 #include "frame.h"
@@ -9,7 +10,6 @@
 #include "utilites.h"
 #include "log.h"
 #include "lists.h"
-#include "macros.h"
 //---------------------------------------------------------------------------
 CFrmSet::CFrmSet(void)
 {
@@ -78,6 +78,14 @@ void CFrmSet::LoadLocalFRMs(void)
                                                          tile_ID, nFrmID, true);
          nFrmID = frmEnv->pTileSet->GetRoofID(x, y);
          //nFrmID &= 0x0FFF;   //отключаем ограничение на 4095
+
+         // epax.map contains roof tiles with out of bounds indexes
+         int totalTiles = pLstFiles->pFRMlst[tile_ID]->Count;
+         if (nFrmID > totalTiles)
+         {
+            pLog->LogX("WARNING: Roof tile ID " + String(nFrmID) + " at x=" + String(x) + ", y=" + String(y) + " exceeds number of tiles (" + String(totalTiles) + ")");
+            continue;
+         }
          LoadFRM(pUtil->GetFRMFileName(tile_ID,
                           pLstFiles->pFRMlst[tile_ID]->Strings[nFrmID]),
                                                          tile_ID, nFrmID, true);
@@ -274,7 +282,10 @@ void CFrmSet::GetCritterFName(String* filename, DWORD frmPID, WORD *frmID)
        ID2 == 0x39 || ID2 == 0x3A ||
        ID2 == 0x21 || ID2 == 0x40)
    {
-      Index = NewIndex;
+      if (NewIndex != -1)
+      {
+         Index = NewIndex;
+      }
       *filename = pUtil->GetFRMFileName(critter_ID,
                                 pLstFiles->pFRMlst[critter_ID]->Strings[Index]);
 //       *filename = pLstFiles->pFRMlst[critter_ID]->Strings[Index];

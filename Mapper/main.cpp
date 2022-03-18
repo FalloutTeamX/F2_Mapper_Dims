@@ -794,7 +794,7 @@ void TfrmEnv::RedrawFloor(void)
       {
          TileId = pTileSet->GetFloorID(x, y);
          //TileId &= 0x0FFF; //отключаем ограничение на 4095 frm для тайлов
-         if (TileId != 1) //несуществующие тайлы пола
+         if (TileId != TILE_EMPTY) //несуществующие тайлы пола
          {
             if ((xx + pFrmSet->pFRM[tile_ID][TileId].GetWi(0, 0) > WorldX && xx < WorldX + w1) &&
                (yy + pFrmSet->pFRM[tile_ID][TileId].GetHe(0, 0) > WorldY && yy < WorldY + h1))
@@ -891,6 +891,7 @@ void TfrmEnv::RedrawRoof(void)
    int yy = -96; //0                    TileY = 0
    int w1 = wform;  //640;
    int h1 = hform;  //480;
+   int totalTiles = pLstFiles->pFRMlst[tile_ID]->Count;
    for (y = iLevel * 100; y < (iLevel + 1) * 100; y++)
    {
       prev_xx = xx;
@@ -899,7 +900,8 @@ void TfrmEnv::RedrawRoof(void)
       {
          TileId = pTileSet->GetRoofID(x, y);
          //TileId &= 0x0FFF;  //отключаем ограничение на 4095 frm для тайлов
-         if (TileId != 1) {//несуществующие тайлы потолка
+
+         if (TileId != TILE_EMPTY && TileId < totalTiles) { // epax.map contains out of bounds tiles
             if ((xx + pFrmSet->pFRM[tile_ID][TileId].GetWi(0, 0) > WorldX && xx < WorldX + w1) &&
                (yy + pFrmSet->pFRM[tile_ID][TileId].GetHe(0, 0) > WorldY && yy < WorldY + h1))
             {
